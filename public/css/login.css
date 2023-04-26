@@ -1,0 +1,30 @@
+.linkSenha{ text-decoration: none; }
+.linkSenha:hover{ text-decoration:underline; }
+.icon{ 
+    font-size: 25px; 
+    cursor: pointer;
+}
+.icon:hover{
+    transform: scale(1.11); 
+    transition: .4s;
+}
+
+div i:first-child:hover{
+    color: #DB4437;
+}
+
+div i:nth-child(2):hover{
+    color: #A8A8A8;
+}
+
+
+div i:nth-child(3):hover{
+    color: #3B5998;
+}
+
+input[type="password"] {
+    background-image: url('https://cdn.icon-icons.com/icons2/1381/PNG/512/vcsconflicting_93497.png');
+    background-repeat: no-repeat;
+    background-position: right;
+    padding-right: 25px; 
+}
