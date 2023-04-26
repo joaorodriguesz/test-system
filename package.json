@@ -4,11 +4,14 @@
   "description": "System to create, resolve and manage any type of test/exam.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon app.js"
   },
-  "author": "joao paulo rodrigues, lucas goulart, joao victor possamai",
+  "author": "joaorodriguesz",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }
