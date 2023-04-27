@@ -22,7 +22,7 @@ router.get('/:testId/question', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    fs.writeFile( path.join(global.dataPath, 'tests.json'), JSON.stringify(req.body), (err) => {
+    fs.writeFile( "data/tests.json", JSON.stringify(req.body), (err) => {
         if (err) {
             return res.status(500).send('Erro interno');
         }

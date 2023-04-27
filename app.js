@@ -6,9 +6,6 @@ const path = require('path');
 const bodyParser = require('body-parser');
 
 const app = express();
-// global
-    global.dataPath = path.join(__dirname, 'src', 'data');
-
 // Teamplate Engine
     app.engine('handlebars', handlebars.engine({ defaultLayout: 'main' }));
     app.set('view engine', 'handlebars');
@@ -17,6 +14,7 @@ const app = express();
 //  Directories 
     app.use(express.static(__dirname + '/public'));
     app.use(express.static(__dirname + '/src'));
+    app.use(express.static(__dirname + '/data'));
     app.use(express.static(path.join(__dirname, '/src', '/data')));
     
 // middleware
