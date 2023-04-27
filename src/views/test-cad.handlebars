@@ -1,0 +1,42 @@
+<script src="/controllers/test-cad.controller.js"></script>
+
+<div class="container mt-3">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="text-center">Cadastrar Tarefa</h4>
+        </div>
+        <div class="container-fluid">
+            <div class="row justify-content-center mt-2">
+                <div class="col-5">
+                    <label for="createTest">Nome da tarefa</label>
+                    <input type="text" name="nomeTeste" id="createTest" class="form-control form-control-sm">
+                </div>
+                <div class="col-2 p-4">
+                    <button type="button" class="btn btn-sm btn-success" id="btnAddTarefa" onclick="addTarefa()"><i class="fa fa-plus" aria-hidden="true"></i> Adicionar Tarefa</button>
+                </div>
+                <div class="col-2 d-flex align-items-center">
+                    <button class="btn btn-sm btn-warning" id="salvarTudo" onclick="salvarTudo()">Salvar Todos</button>
+                </div>
+                <hr style="width: 90%;">
+            </div>
+            <div class="table-responsive" id="contTable">
+                <h5 class="text-center">Tarefas Cadastradas</h5>
+                <div class="alerta bg-light m-auto p-1 mt-3" style="width: 93%;">
+                    <h5 class="text-center">Nenhuma tarefa cadastrada</h5>
+                </div>
+                <table class="table table-sm table-striped table-hover table-bordered font-11 w-75 m-auto mb-3" id="mainTable">
+                    <thead class="bg-dark text-white">
+                        <tr>
+                            <th width="75%">Nome da Tarefa</th>
+                            <th width="25%">Cadastrar Perguntas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div><!--FIM CONTAINER CARD-->
+</div>
+
+

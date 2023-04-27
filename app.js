@@ -3,8 +3,11 @@ const navegateRoutes = require('./src/routes/primary.routes');
 const testRoutes = require('./src/routes/test.routes');
 const handlebars = require('express-handlebars');
 const path = require('path');
+const bodyParser = require('body-parser');
 
 const app = express();
+// global
+    global.dataPath = path.join(__dirname, 'src', 'data');
 
 // Teamplate Engine
     app.engine('handlebars', handlebars.engine({ defaultLayout: 'main' }));
@@ -14,6 +17,11 @@ const app = express();
 //  Directories 
     app.use(express.static(__dirname + '/public'));
     app.use(express.static(__dirname + '/src'));
+    app.use(express.static(path.join(__dirname, '/src', '/data')));
+    
+// middleware
+    app.use(bodyParser.urlencoded({ extended: false }));
+    app.use(bodyParser.json());
 
 //  Routes
     app.use('/', navegateRoutes);
