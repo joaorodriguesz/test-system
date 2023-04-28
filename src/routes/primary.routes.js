@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 router.get("/", (req, res) => {
-    res.send("Home")
+    res.render('home', {"title": 'Home', "token": global.tokenAuth});
 });
 
 router.get("/login", (req, res) => {
@@ -12,8 +12,8 @@ router.get("/login", (req, res) => {
 
 router.post("/login", (req, res) => {
     if (req.body.username === 'aaa' && req.body.password === 'aaa') {
-        global.tokenAuth = "autorizado";
-        res.status(200);
+        global.tokenAuth = true;
+        return res.status(200).json({ message: 'Credenciais validas' });
     } 
     
     return res.status(401).json({ message: 'Credenciais inválidas' });

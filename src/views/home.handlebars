@@ -1,0 +1,54 @@
+    <link rel="stylesheet" href="/css/home.css">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container">
+			<a class="navbar-brand" href="#">Lista de Tarefas</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link" href="/login"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<main>
+		<div class="container">
+			<section class="boas-vindas mt-5 text-center"> <!--SECTION MENSAGEM DE BOAS VINDAS-->
+				<h1>Olá, bem vindo!</h1>
+                {{#if token}}
+                <p>Escolha a opção que desejar!</p>
+                {{else}}
+				<p>Casa queira cadastrar uma tarefa faça login no sistema!</p>
+                {{/if}}
+			</section>
+			<section class="tarefas mt-5"><!--SECTION AÇÕES-->
+				<div class="d-flex justify-content-evenly">
+                    {{#if token}}
+					<div class="card mb-3" style="max-width: 18rem;">
+						<div class="card-body">
+						  <a href="/test"><h5 class="card-title" ><i class="fa fa-tasks text-secondary" aria-hidden="true"></i>	Criar Tarefa Nova</h5></a>
+						  <hr>
+						</div>
+					</div>
+                    {{/if}}
+					<div class="card mb-3" style="max-width: 18rem;">
+						<div class="card-body">
+						  <h5 class="card-title"><i class="fa fa-hand-o-right text-primary" aria-hidden="true"></i>	Responder Tarefas</h5>
+						  <hr>
+						  <p class="card-text">Clique aqui para responder uma tarefa!</p>
+						</div>
+					</div>
+				</div>
+				<div class="card w-75 m-auto mt-3">
+					<div class="card-header">
+						Resultados
+					</div>
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item text-center">Nenhuma tarefa em andamento</li>
+					</ul> 
+				</div>
+			</section>
+		</div>
+	</main>

@@ -10,12 +10,12 @@ router.get('/result', (req, res) => {
     res.send('listando resultado');
 });
 
-router.get('/', (req, res) => {
-    res.type('json');
-    res.body = (require(path.join('..','..', 'data/tests.json')))
-});
+// router.get('/', (req, res) => {
+//     res.type('json');
+//     res.body = (require(path.join('..','..', 'data/tests.json')))
+// });
 
-router.get('/cad',autenticacaoMiddleware, (req, res) => {
+router.get('/',autenticacaoMiddleware, (req, res) => {
     res.render('test-cad', {title: 'Tests'});
 });
 

@@ -16,10 +16,8 @@ function logar(){
         body: JSON.stringify(login)
     })
     .then((response) => {
-        fakeLoading().then(()=>{
-            button.classList.remove('spinner-border', 'spinner-border-sm');
-            loginValid(response.status);
-        })
+        button.classList.remove('spinner-border', 'spinner-border-sm');
+        loginValid(response.status);
     });
     
 }
@@ -28,12 +26,12 @@ function loginValid(status){
     if(status != 200){
         document.querySelector('#email').classList.add('is-invalid'); 
         document.querySelector('#senha').classList.add('is-invalid');
-        location.href = '/';
         return;
     };
 
     document.querySelector('#email').classList.add('is-valid'); 
     document.querySelector('#senha').classList.add('is-valid');
+    location.href = '/';
 }
 
 function fakeLoading() {
