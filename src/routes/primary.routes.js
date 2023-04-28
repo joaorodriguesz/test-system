@@ -11,12 +11,12 @@ router.get("/login", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-    if (!req.body.username === 'aaa' && !req.body.password === 'aaa') {
-        return res.status(401).json({ message: 'Credenciais inválidas' });
+    if (req.body.username === 'aaa' && req.body.password === 'aaa') {
+        global.tokenAuth = "autorizado";
+        res.status(200);
     } 
-
-    req.session.usuario = { nome: 'req.body.username', idade: 30 };
-    res.status(200);
+    
+    return res.status(401).json({ message: 'Credenciais inválidas' });
 });
 
 module.exports = router;

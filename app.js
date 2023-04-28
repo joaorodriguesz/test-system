@@ -5,7 +5,6 @@ const handlebars = require('express-handlebars');
 const path = require('path');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-const MemoryStore = require('memorystore')(session);
 
 const app = express();
 // Teamplate Engine
@@ -23,9 +22,6 @@ const app = express();
         secret: 'meu-segredo',
         resave: true,
         saveUninitialized: true,
-        store: new MemoryStore({
-            checkPeriod: 86400000
-        })
     }));
   
 // middleware

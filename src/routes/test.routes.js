@@ -11,7 +11,8 @@ router.get('/result', (req, res) => {
 });
 
 router.get('/', (req, res) => {
-    
+    res.type('json');
+    res.body = (require(path.join('..','..', 'data/tests.json')))
 });
 
 router.get('/cad',autenticacaoMiddleware, (req, res) => {

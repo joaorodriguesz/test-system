@@ -28,6 +28,7 @@ function loginValid(status){
     if(status != 200){
         document.querySelector('#email').classList.add('is-invalid'); 
         document.querySelector('#senha').classList.add('is-invalid');
+        location.href = '/';
         return;
     };
 
