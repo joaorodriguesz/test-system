@@ -4,14 +4,17 @@
   "description": "System to create, resolve and manage any type of test/exam.",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "start-all": "nodemon app.js & npm run json-start-tests & npm run json-start-results",
+    "json-start-tests": "json-server --watch data/tests.json --port 3000",
+    "json-start-results": "json-server --watch data/results.json --port 3001"
   },
   "author": "joaorodriguesz",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
     "express-handlebars": "^7.0.7",
-    "json-server": "^0.17.3"
+    "express-session": "^1.17.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"

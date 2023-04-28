@@ -51,7 +51,7 @@ function addTarefa(){
 }
 
 function salvarTudo (){
-    fetch('https://joaorodriguesz-potential-fishstick-gwxj95gq7p6cwr4q-8081.preview.app.github.dev/test', {
+    fetch('http://localhost:3000/tests', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

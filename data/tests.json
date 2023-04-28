@@ -1,1 +1,26 @@
-[{"id":0,"descricao":"fghfghgfh"}]
+{
+  "tests": [
+    {
+      "id": 0,
+      "descricao": "Descricao do test",
+      "pergunta": [
+        {
+          "id": 0,
+          "descricao": "Descricao da pergunta",
+          "opcao": [
+            {
+              "A": "opcao a"
+            },
+            {
+              "B": "opcao b"
+            },
+            {
+              "C": "opcao c"
+            }
+          ],
+          "correta": "c"
+        }
+      ]
+    }
+  ]
+}
