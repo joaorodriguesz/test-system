@@ -5,8 +5,8 @@ const handlebars = require('express-handlebars');
 const path = require('path');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-global.tokenAuth = false;
 const app = express();
+
 // Teamplate Engine
     app.engine('handlebars', handlebars.engine({ defaultLayout: 'main' }));
     app.set('view engine', 'handlebars');

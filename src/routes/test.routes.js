@@ -10,7 +10,7 @@ router.get('/result', (req, res) => {
     res.send('listando resultado');
 });
 
-router.get('/', (req, res) => {
+router.get('/', autenticacaoMiddleware, (req, res) => {
     fetch("http://localhost:3000/tests", {
         method: "GET",
     })
@@ -20,6 +20,7 @@ router.get('/', (req, res) => {
     });
 });
 
+
 router.get('/:testId/question', (req, res) => {
     fetch(`http://localhost:3000/tests/${req.params.testId}`, {
         method: "GET",
@@ -27,6 +28,26 @@ router.get('/:testId/question', (req, res) => {
     .then((response) => response.json())
     .then((test) => {
         res.render('question-cad', {test: test});
+    });
+});
+
+router.get('/resolve', (req, res) => {
+    fetch("http://localhost:3000/tests", {
+        method: "GET",
+    })
+    .then((response) => response.json())
+    .then((tests) => {
+        res.render('test-resolve', {tests: tests});
+    });
+});
+
+router.get('/:testId/resolve', (req, res) => {
+    fetch(`http://localhost:3000/tests/${req.params.testId}`, {
+        method: "GET",
+    })
+    .then((response) => response.json())
+    .then((test) => {
+        res.render('test-resolve-question', {test: test});
     });
 });
 
