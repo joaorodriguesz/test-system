@@ -10,38 +10,24 @@ router.get('/result', (req, res) => {
     res.send('listando resultado');
 });
 
-// router.get('/', (req, res) => {
-//     res.type('json');
-//     res.body = (require(path.join('..','..', 'data/tests.json')))
-// });
-
-router.get('/',autenticacaoMiddleware, (req, res) => {
-    res.render('test-cad', {title: 'Tests'});
-});
-
-router.get('/:testId/question', (req, res) => {
-    res.send('question');
-});
-
-router.post('/', (req, res) => {
-    fs.writeFile( "data/tests.json", JSON.stringify(req.body), (err) => {
-        if (err) {
-            res.status(500).send('Erro interno');
-        }
-        res.status(200).send(err);
+router.get('/', (req, res) => {
+    fetch("http://localhost:3000/tests", {
+        method: "GET",
+    })
+    .then((response) => response.json())
+    .then((tests) => {
+        res.render('test-cad', {tests: tests});
     });
 });
 
-router.post('/:testId/question', (req, res) => {
-
-});
-
-router.put('/:testId', (req, res) => {
-    res.send('question');
-});
-
-router.put('/:testId/question', (req, res) => {
-    res.send('question');
+router.get('/:testId/question', (req, res) => {
+    fetch(`http://localhost:3000/tests/${req.params.testId}`, {
+        method: "GET",
+    })
+    .then((response) => response.json())
+    .then((test) => {
+        res.render('question-cad', {test: test});
+    });
 });
 
 module.exports = router;
