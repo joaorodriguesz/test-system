@@ -30,25 +30,20 @@ function remove(id) {
 }
 
 function modify(id) {
-  const testDescricao = document.querySelector("#test-descricao-mod");
+  const testDescricaoMod = document.querySelector("#test-descricao-mod-"+id);
 
-  let tests = {
-    id: 0,
-    descricao: testDescricao.value,
-    pergunta: [],
-  };
-
-  testDescricao.value = null;
+  let descricao = testDescricaoMod.value;
+  testDescricaoMod.value = null;
 
   fetch(`http://localhost:3000/tests/${id}`, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(tests)
-  }).then(()=>{
-    loadPage()
+    method: 'GET'
+  })
+  .then((response)=> response.json())
+  .then((response)=>{
+    response.descricao = descricao;
+    put(id, response);
   });
+
 }
 
 function loadPage(){
@@ -61,4 +56,16 @@ function loadPage(){
   setTimeout(()=>{
     location.reload();
   }, 1000)
+}
+
+function put(id, object){
+  fetch(`http://localhost:3000/tests/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(object)
+  }).then(()=>{
+    loadPage();
+  });
 }

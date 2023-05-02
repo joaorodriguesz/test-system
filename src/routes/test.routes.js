@@ -10,7 +10,7 @@ router.get('/result', (req, res) => {
     res.send('listando resultado');
 });
 
-router.get('/', autenticacaoMiddleware, (req, res) => {
+router.get('/', (req, res) => {
     fetch("http://localhost:3000/tests", {
         method: "GET",
     })

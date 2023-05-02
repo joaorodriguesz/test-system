@@ -13,7 +13,7 @@ function save(id) {
     method: "GET",
   })
     .then((response) => response.json())
-    .then((result) => {
+    .then((result) => {      
       result.perguntas.push({
         idTeste: result.id,
         descricao: descPergunta.value,
@@ -35,21 +35,19 @@ function remove(id, descricao) {
   })
     .then((response) => response.json())
     .then((result) => {
-      console.log(result);
       result.perguntas = result.perguntas.filter((perguntas) => perguntas.descricao !== descricao);
-
       put(id, result);
     });
 }
 
-function modify(id, descricao) {
-  const descPergunta = document.querySelector("#pergunta-descricao-mod");
-  const opcaoA = document.querySelector("#desc-a-mod");
-  const opcaoB = document.querySelector("#desc-b-mod");
-  const opcaoC = document.querySelector("#desc-c-mod");
-  const opcaoD = document.querySelector("#desc-d-mod");
-  const opcaoE = document.querySelector("#desc-e-mod");
-  const opcaoCorreta = document.querySelector("#opcao-correta-mod");
+function modify(id, descricao, index) {
+  const descPergunta = document.querySelector("#pergunta-descricao-mod-"+index);
+  const opcaoA = document.querySelector("#desc-a-mod-"+index);
+  const opcaoB = document.querySelector("#desc-b-mod-"+index);
+  const opcaoC = document.querySelector("#desc-c-mod-"+index);
+  const opcaoD = document.querySelector("#desc-d-mod-"+index);
+  const opcaoE = document.querySelector("#desc-e-mod-"+index);
+  const opcaoCorreta = document.querySelector("#opcao-correta-mod-"+index);
 
   fetch(`http://localhost:3000/tests/${id}`, {
     method: "GET",
@@ -61,19 +59,17 @@ function modify(id, descricao) {
 
       perguntaEdit = {
         idTeste: result.id,
-        descricao: descPergunta.value ? perguntaEdit : perguntaEdit[0].descricao,
-        A: opcaoA.value ? opcaoA.value : perguntaEdit[0].opcaoA,
-        B: opcaoB.value ? opcaoB.value : perguntaEdit[0].opcaoB,
-        C: opcaoC.value ? opcaoC.value : perguntaEdit[0].opcaoC,
-        D: opcaoD.value ? opcaoD.value : perguntaEdit[0].opcaoD,
-        E: opcaoE.value ? opcaoE.value : perguntaEdit[0].opcaoE,
-        opcaoCorreta: opcaoCorreta.value ? opcaoCorreta.value : perguntaEdit[0].opcaoCorreta,
+        descricao: descPergunta.value,
+        A: opcaoA.value,
+        B: opcaoB.value,
+        C: opcaoC.value,
+        D: opcaoD.value,
+        E: opcaoE.value,
+        opcaoCorreta: opcaoCorreta.value,
       };
 
-      console.log(perguntaEdit);
-
       result.perguntas.push(perguntaEdit);
-
+      
       put(id, result);
     });
 }

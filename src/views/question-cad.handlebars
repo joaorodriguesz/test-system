@@ -56,7 +56,7 @@
                     type="button"
                     class="btn btn-sm btn-primary"
                     data-toggle="modal"
-                    data-target="#modModal-{{this.descricao}}"
+                    data-target="#modModal-{{@index}}"
                   >
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                   </button>
@@ -72,7 +72,7 @@
 
                   <div
                     class="modal fade"
-                    id="modModal-{{this.descricao}}"
+                    id="modModal-{{@index}}"
                     tabindex="-1"
                     role="dialog"
                     aria-labelledby="modModal"
@@ -81,7 +81,7 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="modModal">Editar Pergunta</h5>
+                            <h5 class="modal-title">Editar Pergunta</h5>
                             <button
                             type="button"
                             class="close"
@@ -98,8 +98,8 @@
                                 <input
                                 type="text"
                                 value="{{this.descricao}}"
-                                name="pergunta-descricao-mod"
-                                id="pergunta-descricao-mod"
+                                name="pergunta-descricao-mod-{{@index}}"
+                                id="pergunta-descricao-mod-{{@index}}"
                                 class="form-control form-control-sm"
                                 />
                             </div>
@@ -110,8 +110,8 @@
                                 <label for="descricao">Descrição A</label>
                                 <input
                                 type="text"
-                                name="desc-a-mod"
-                                id="desc-a-mod"
+                                name="desc-a-mod-{{@index}}"
+                                id="desc-a-mod-{{@index}}"
                                 value="{{this.A}}"
                                 class="form-control form-control-sm"
                                 />
@@ -122,8 +122,8 @@
                                 <label for="descricao">Descrição B</label>
                                 <input
                                 type="text"
-                                name="desc-b-mod"
-                                id="desc-b-mod"
+                                name="desc-b-mod-{{@index}}"
+                                id="desc-b-mod-{{@index}}"
                                 value="{{this.B}}"
                                 class="form-control form-control-sm"
                                 />
@@ -134,8 +134,8 @@
                                 <label for="descricao">Descrição C</label>
                                 <input
                                 type="text"
-                                name="desc-c-mod"
-                                id="desc-c-mod"
+                                name="desc-c-mod-{{@index}}"
+                                id="desc-c-mod-{{@index}}"
                                 value="{{this.C}}"
                                 class="form-control form-control-sm"
                                 />
@@ -146,8 +146,8 @@
                                 <label for="descricao">Descrição D</label>
                                 <input
                                 type="text"
-                                name="desc-d-mod"
-                                id="desc-d-mod"
+                                name="desc-d-mod-{{@index}}"
+                                id="desc-d-mod-{{@index}}"
                                 value="{{this.D}}"
                                 class="form-control form-control-sm"
                                 />
@@ -158,8 +158,8 @@
                                 <label for="descricao">Descrição E</label>
                                 <input
                                 type="text"
-                                name="desc-e-mod"
-                                id="desc-e-mod"
+                                name="desc-e-mod-{{@index}}"
+                                id="desc-e-mod-{{@index}}"
                                 value="{{this.E}}"
                                 class="form-control form-control-sm"
                                 />
@@ -169,7 +169,7 @@
                             <div class="row">
                             <div class="col-md-12">
                                 <label for="descricao">Opção correta</label>
-                                <select id="opcao-correta-mod" class="form-control form-control-sm">
+                                <select id="opcao-correta-mod-{{@index}}" class="form-control form-control-sm">
                                 <option value="A">A</option>
                                 <option value="B">B</option>
                                 <option value="C">C</option>
@@ -182,7 +182,7 @@
                         <div class="modal-footer">
                             <button
                             type="button"
-                            onclick="modify({{this.idTeste}}, '{{this.descricao}}')"
+                            onclick="modify({{this.idTeste}}, '{{this.descricao}}', '{{@index}}')"
                             data-dismiss="modal"
                             class="btn btn-primary"
                             >Salvar</button>
