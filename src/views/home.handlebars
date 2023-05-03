@@ -1,47 +1,46 @@
-    <link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="/css/home.css">
 
-	<main>
+<main>
 	<div class=" mt-5">
 		<div class="row justify-content-center">
 			<div class="col-md-8">
-			<div class="card">
-				<div class="card-header">
-				Resultados dos Testes
-				</div>
-				<div class="card-body">
-				<table class="table">
-					<thead>
-					<tr>
-						<th scope="col">#</th>
-						<th scope="col">Aluno</th>
-						<th scope="col">Disciplina</th>
-						<th scope="col">Nota</th>
-					</tr>
-					</thead>
-					<tbody>
-					<tr>
-						<th scope="row">1</th>
-						<td>João</td>
-						<td>Matemática</td>
-						<td>9.5</td>
-					</tr>
-					<tr>
-						<th scope="row">2</th>
-						<td>Maria</td>
-						<td>Português</td>
-						<td>8.0</td>
-					</tr>
-					<tr>
-						<th scope="row">3</th>
-						<td>Pedro</td>
-						<td>História</td>
-						<td>7.5</td>
-					</tr>
-					</tbody>
-				</table>
+				<div class="card">
+					<div class="card-header">
+						Resultados dos Testes
+					</div>
+					<div class="text-center mt-4 mb-4 d-none" id="loading">
+						<div class="spinner-border text-primary" role="status">
+							<span class="sr-only">Loading...</span>
+						</div>
+					</div>
+					<div class="card-body" id="main">
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">#</th>
+									<th scope="col">Test</th>
+									<th scope="col">Tentativa</th>
+									<th scope="col">Qtd Perguntas</th>
+									<th scope="col">Qtd Prgts respondidas</th>
+									<th scope="col">Qtd Prgts corretas</th>
+								</tr>
+							</thead>
+							<tbody>
+								{{#each results}}
+								<tr>
+									<th scope="row">{{ this.testId }}</th>
+									<td>{{ this.teste }}</td>
+									<td>{{ this.id }}</td>
+									<td>{{ this.qtdPerguntas }}</td>
+									<td>{{ this.qtdPerguntasResp }}</td>
+									<td>{{ this.qtdPerguntasCorretas }}</td>
+								</tr>
+								{{/each}}
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
-			</div>
-		</div> 
+		</div>
 	</div>
 </main>

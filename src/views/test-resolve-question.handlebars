@@ -4,38 +4,49 @@
     <div class="row justify-content-center align-items-center mt-4">
         <div class="col-md-8">
             <h2 class="text-center mb-4">Perguntas e Respostas</h2>
-            {{#each test.perguntas}}
-                <form onsubmit="save(event)" id="form">
+            <div class="text-center mt-4 mb-4 d-none" id="loading">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+            <div id="main">
+                <form id="form">
+                    {{#each test.perguntas}}
                     <div class="card">
-                        <div class="card-body" id="{{ this.descricao }}">
+                        <div class="card-body" name="{{ @index }}">
                             <p class="card-text">{{ this.descricao }}</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="{{ this.descricao }}" id="{{ this.descricao }}" value="A">
-                                <label class="form-check-label" for="{{ this.descricao }}">
+                                <input class="form-check-input" type="radio" name="{{ @index }}" id="{{ @index }}"
+                                    value="A">
+                                <label class="form-check-label" for="{{ @index }}">
                                     (A) {{ this.A }}
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="{{ this.descricao }}" id="{{ this.descricao }}" value="C">
-                                <label class="form-check-label" for="{{ this.descricao }}">
+                                <input class="form-check-input" type="radio" name="{{ @index }}" id="{{ @index }}"
+                                    value="B">
+                                <label class="form-check-label" for="{{ @index }}">
                                     (B) {{ this.B }}
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="{{ this.descricao }}" id="{{ this.descricao }}" value="C">
-                                <label class="form-check-label" for="{{ this.descricao }}">
+                                <input class="form-check-input" type="radio" name="{{ @index }}" id="{{ @index }}"
+                                    value="C">
+                                <label class="form-check-label" for="{{ @index }}">
                                     (C) {{ this.C }}
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="{{ this.descricao }}" id="{{ this.descricao }}" value="D">
-                                <label class="form-check-label" for="{{ this.descricao }}">
+                                <input class="form-check-input" type="radio" name="{{ @index }}" id="{{ @index }}"
+                                    value="D">
+                                <label class="form-check-label" for="{{ @index }}">
                                     (D) {{ this.D }}
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="{{ this.descricao }}" id="{{ this.descricao }}" value="E">
-                                <label class="form-check-label" for="{{ this.descricao }}">
+                                <input class="form-check-input" type="radio" name="{{ @index }}" id="{{ @index }}"
+                                    value="E">
+                                <label class="form-check-label" for="{{ @index }}">
                                     (E) {{ this.E }}
                                 </label>
                             </div>
@@ -43,11 +54,12 @@
                     </div>
                     <div class="mt-3"></div>
 
-            {{/each}}
+                    {{/each}}
+                </form>
                 <div class="text-center mt-4">
-                    <button type="submit" class="btn btn-primary">Enviar Respostas</button>
+                    <button type="button" onclick="submit({{ test.id }})" class="btn btn-primary">Enviar Respostas</button>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>

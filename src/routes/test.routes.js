@@ -1,9 +1,8 @@
-const { log } = require('console');
 const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 const path = require('path');
-const autenticacaoMiddleware = require(path.join(__dirname,'..','..','middlewares/autenticacaoMiddleware'));
+const autenticacaoMiddleware = require(path.join(__dirname,'..','..','middlewares/autenticacao-middleware'));
  
 
 router.get('/result', (req, res) => {
@@ -16,7 +15,7 @@ router.get('/', (req, res) => {
     })
     .then((response) => response.json())
     .then((tests) => {
-        res.render('test-cad', {tests: tests});
+        res.render('test-cad', {tests: tests, token: global.token});
     });
 });
 
@@ -27,7 +26,7 @@ router.get('/:testId/question', (req, res) => {
     })
     .then((response) => response.json())
     .then((test) => {
-        res.render('question-cad', {test: test});
+        res.render('question-cad', {test: test, token: global.token});
     });
 });
 
@@ -37,7 +36,7 @@ router.get('/resolve', (req, res) => {
     })
     .then((response) => response.json())
     .then((tests) => {
-        res.render('test-resolve', {tests: tests});
+        res.render('test-resolve', {tests: tests, token: global.token});
     });
 });
 
@@ -47,7 +46,7 @@ router.get('/:testId/resolve', (req, res) => {
     })
     .then((response) => response.json())
     .then((test) => {
-        res.render('test-resolve-question', {test: test});
+        res.render('test-resolve-question', {test: test, token: global.token});
     });
 });
 

@@ -1,9 +1,7 @@
 function autenticacaoMiddleware(req, res, next) {
-  console.log(req.session.name );
-  if (!req.session.name) {
+  if (!global.token) {
     return res.redirect('/login');
   }
-
   next();
 }
 

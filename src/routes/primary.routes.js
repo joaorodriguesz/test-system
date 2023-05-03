@@ -3,7 +3,14 @@ const express = require('express');
 const router = express.Router();
 
 router.get("/", (req, res) => {
-    res.render('home', {"title": 'Home', "sessionName": req.session.name});
+    fetch("http://localhost:3001/results", {
+        method: "GET",
+    })
+    .then((response) => response.json())
+    .then((results) => {
+        res.render('home', {"title": 'Home', "token": global.token, "results": results});
+    });
+
 });
 
 router.get("/login", (req, res) => {
@@ -11,8 +18,8 @@ router.get("/login", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
-    if (req.body.username === 'aaa' && req.body.password === 'aaa') {
-        req.session.name = "joaozinho";
+    if (req.body.username === 'teste' && req.body.password === 'teste') {
+        global.token = true;
         return res.status(200).json({ message: 'Credenciais validas' });
     } 
     

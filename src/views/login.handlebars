@@ -1,9 +1,9 @@
 <link rel="stylesheet"  type="text/css" href="/css/login.css">
 <script src="/controllers/login.controller.js"></script>
 
-<section class="vh-100 d-flex align-items-center justify-content-center">
-   <div class="container-fluid h-custom">
-      <div class="row d-flex justify-content-center align-items-center h-100">
+<section class="d-flex align-items-center justify-content-center">
+   <div class="container-fluid">
+      <div class="row d-flex justify-content-center align-items-center">
          <div class="col-md-9 col-lg-6 col-xl-5">
             <img src="/imgs/img_login_fundo.jpg" class="img-fluid" alt="Imagem de fundo login">
          </div>
@@ -12,13 +12,10 @@
                <!-- Input Do email -->
                <div class="form-outline form-floating mb-4">
                   <input type="text" class="form-control"  id="email" placeholder="Seu e-mail">
-                  <label for="floatingInput">E-mail</label>
                </div>
                <!-- Input de Senha -->
                <div class="form-outline form-floating mb-3">
                   <input type="password" class="form-control senha" id="senha" placeholder="Digite sua senha">
-                  <label for="floatingInput">Senha</label>
-                  <i class="fa fa-eye position-absolute end-0 bottom-0 mb-3 me-3" style="cursor: pointer;" onclick="togglePassword()"></i>
                </div>
                <div class="d-flex justify-content-between align-items-center">
                   <!-- Checkbox -->
@@ -35,14 +32,6 @@
                       <span id="login" role="status" aria-hidden="true"></span>  login
                   </button>
                   <p class="small fw-bold mt-2 pt-1 mb-0">Não possui conta? <a href="#!" class="link-success">Registre-se</a></p>
-               </div>
-               <div class="mt-4 text-center">
-                  <h6>Logar com</h6>
-                  <div class="d-flex justify-content-evenly mt-3">
-                     <i class="fa fa-google icon" aria-hidden="true"></i>
-                     <i class="fa fa-apple icon" aria-hidden="true"></i>
-                     <i class="fa fa-facebook icon" aria-hidden="true"></i>
-                  </div>
                </div>
             </form>
          </div>

@@ -28,3 +28,6 @@ input[type="password"] {
     background-position: right;
     padding-right: 25px; 
 }
+section {
+    overflow: hidden !important;
+}
