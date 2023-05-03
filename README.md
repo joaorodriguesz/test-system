@@ -21,8 +21,10 @@
 > To run the project, use the following command:
 >
 > ```bash
-> npm start
+> npm run start-all
 > ```
 >
 > Open your browser at `http://localhost:8081` to see the application in action.
+>
+> 
 
