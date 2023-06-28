@@ -5,6 +5,10 @@ const { Schema } = mongoose;
 const { testSchema } = require("./Test");
 
 const testResultSchema = new Schema({
+        studantName: {
+            type: String,
+            required: true
+        },
         test: {
             type: testSchema,
             required: true

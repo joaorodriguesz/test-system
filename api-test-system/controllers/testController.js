@@ -9,7 +9,7 @@ const testController  = {
                 questions: req.body.questions,
             };
 
-            const response = await TestModel.create(test);
+            const response = await Test.create(test);
             
             res.status(201).json(response);
         } catch (error) {
@@ -18,7 +18,7 @@ const testController  = {
     },
     getAll: async (req, res) => {
         try {
-            const tests = await  TestModel.find();
+            const tests = await  Test.find();
 
             res.json(tests)
         } catch (error) {
@@ -28,7 +28,7 @@ const testController  = {
     get: async (req, res) => {
         try {
             const id = req.params.id;
-            const test = await TestModel.findById(id);
+            const test = await Test.findById(id);
             
             if(!test){
                 return res.status(404).json("Register not found");
@@ -42,13 +42,13 @@ const testController  = {
     delete: async (req, res) => {
         try {
             const id = req.params.id;
-            const test = await TestModel.findById(id);
+            const test = await Test.findById(id);
     
             if(!test){
                 return res.status(404).json("Register not found");
             }
 
-            const deleteTest = await TestModel.findByIdAndDelete(id);
+            const deleteTest = await Test.findByIdAndDelete(id);
 
             res.status(200).json(deleteTest);
         } catch (error) {
@@ -64,7 +64,7 @@ const testController  = {
                 questions: req.body.questions,
             };
 
-            const updatedTest = await TestModel.findByIdAndUpdate(id, test);
+            const updatedTest = await Test.findByIdAndUpdate(id, test);
 
             if(!test){
                 return res.status(404).json("Register not found");

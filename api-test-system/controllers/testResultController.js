@@ -1,12 +1,17 @@
 const TestResult = require('../models/TestResult');
+const { Test } = require('../models/Test');
 
 const testResultController  = {
     
     create: async(req, res) => {
+
         try {
             const testResult = {
-                title: req.body.title,
-                questions: req.body.questions,
+                studantName: req.body.studantName,
+                test: await Test.findById(req.params.idTest),
+                answeredQuestionsCount: req.body.answeredQuestionsCount,
+                correctQuestionsCount: req.body.correctQuestionsCount,
+                questionsCount: req.body.questionsCount
             };
 
             const response = await TestResult.create(testResult);
@@ -27,7 +32,7 @@ const testResultController  = {
     },
     get: async (req, res) => {
         try {
-            const id = req.params.id;
+            const id = req.params.idResult;
             const testResult = await TestResult.findById(id);
             
             if(!testResult){
@@ -41,7 +46,7 @@ const testResultController  = {
     },
     delete: async (req, res) => {
         try {
-            const id = req.params.id;
+            const id = req.params.idResult;
             const testResult = await TestResult.findById(id);
     
             if(!testResult){
@@ -57,11 +62,14 @@ const testResultController  = {
     },
     update: async (req, res) => {
         try {
-            const id = req.params.id;
+            const id = req.params.idResult;
 
             const testResult = {
-                title: req.body.title,
-                questions: req.body.questions,
+                studantName: req.body.studantName,
+                test: await Test.findById(req.params.idTest),
+                answeredQuestionsCount: req.body.answeredQuestionsCount,
+                correctQuestionsCount: req.body.correctQuestionsCount,
+                questionsCount: req.body.questionsCount
             };
 
             const updatedTest = await TestResult.findByIdAndUpdate(id, testResult);
