@@ -46,4 +46,4 @@ coverage/
 Thumbs.db
 
 # db
-db/
+db/urlConection.js
