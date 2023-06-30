@@ -1,0 +1,1425 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "questions",
+        "description": "Documentação da API de questions",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "/api",
+            "description": "Servidor de produção"
+        }
+    ],
+    "paths": {
+        "/tests": {
+            "get": {
+                "summary": "Get list of tests",
+                "description": "Returns a list of tests.",
+                "responses": {
+                    "200": {
+                        "description": "List of tests successfully obtained.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "_id": {
+                                                "type": "string",
+                                                "description": "Test ID"
+                                            },
+                                            "title": {
+                                                "type": "string",
+                                                "description": "Test title"
+                                            },
+                                            "questions": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "description": {
+                                                            "type": "string",
+                                                            "description": "Question description"
+                                                        },
+                                                        "optionA": {
+                                                            "type": "string",
+                                                            "description": "Question option A"
+                                                        },
+                                                        "optionB": {
+                                                            "type": "string",
+                                                            "description": "Question option B"
+                                                        },
+                                                        "optionC": {
+                                                            "type": "string",
+                                                            "description": "Question option C"
+                                                        },
+                                                        "optionD": {
+                                                            "type": "string",
+                                                            "description": "Question option D"
+                                                        },
+                                                        "optionE": {
+                                                            "type": "string",
+                                                            "description": "Question option E"
+                                                        },
+                                                        "correctOption": {
+                                                            "type": "string",
+                                                            "description": "Correct option for the question"
+                                                        },
+                                                        "_id": {
+                                                            "type": "string",
+                                                            "description": "Question ID"
+                                                        },
+                                                        "createdAt": {
+                                                            "type": "string",
+                                                            "format": "date-time",
+                                                            "description": "Question creation date"
+                                                        },
+                                                        "updatedAt": {
+                                                            "type": "string",
+                                                            "format": "date-time",
+                                                            "description": "Question update date"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "createdAt": {
+                                                "type": "string",
+                                                "format": "date-time",
+                                                "description": "Test creation date"
+                                            },
+                                            "updatedAt": {
+                                                "type": "string",
+                                                "format": "date-time",
+                                                "description": "Test update date"
+                                            },
+                                            "__v": {
+                                                "type": "integer",
+                                                "description": "Test version"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Add new test",
+                "description": "Adds a new test.",
+                "requestBody": {
+                    "description": "Information of the new test",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "description": "Test title"
+                                    },
+                                    "questions": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "description": {
+                                                    "type": "string",
+                                                    "description": "Question description"
+                                                },
+                                                "optionA": {
+                                                    "type": "string",
+                                                    "description": "Question option A"
+                                                },
+                                                "optionB": {
+                                                    "type": "string",
+                                                    "description": "Question option B"
+                                                },
+                                                "optionC": {
+                                                    "type": "string",
+                                                    "description": "Question option C"
+                                                },
+                                                "optionD": {
+                                                    "type": "string",
+                                                    "description": "Question option D"
+                                                },
+                                                "optionE": {
+                                                    "type": "string",
+                                                    "description": "Question option E"
+                                                },
+                                                "correctOption": {
+                                                    "type": "string",
+                                                    "description": "Correct option for the question"
+                                                }
+                                            },
+                                            "required": [
+                                                "description",
+                                                "optionA",
+                                                "optionB",
+                                                "optionC",
+                                                "optionD",
+                                                "optionE",
+                                                "correctOption"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "required": [
+                                    "title",
+                                    "questions"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Test successfully added.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "_id": {
+                                            "type": "string",
+                                            "description": "Test ID"
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "description": "Test title"
+                                        },
+                                        "questions": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "description": {
+                                                        "type": "string",
+                                                        "description": "Question description"
+                                                    },
+                                                    "optionA": {
+                                                        "type": "string",
+                                                        "description": "Question option A"
+                                                    },
+                                                    "optionB": {
+                                                        "type": "string",
+                                                        "description": "Question option B"
+                                                    },
+                                                    "optionC": {
+                                                        "type": "string",
+                                                        "description": "Question option C"
+                                                    },
+                                                    "optionD": {
+                                                        "type": "string",
+                                                        "description": "Question option D"
+                                                    },
+                                                    "optionE": {
+                                                        "type": "string",
+                                                        "description": "Question option E"
+                                                    },
+                                                    "correctOption": {
+                                                        "type": "string",
+                                                        "description": "Correct option for the question"
+                                                    },
+                                                    "_id": {
+                                                        "type": "string",
+                                                        "description": "Question ID"
+                                                    },
+                                                    "createdAt": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "description": "Question creation date"
+                                                    },
+                                                    "updatedAt": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "description": "Question update date"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "createdAt": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "description": "Test creation date"
+                                        },
+                                        "updatedAt": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "description": "Test update date"
+                                        },
+                                        "__v": {
+                                            "type": "integer",
+                                            "description": "Test version"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/tests/{id}": {
+          "get": {
+              "summary": "Get test by ID",
+              "description": "Returns a test by its ID.",
+              "parameters": [
+                  {
+                      "in": "path",
+                      "name": "id",
+                      "schema": {
+                          "type": "string"
+                      },
+                      "required": true,
+                      "description": "Test ID"
+                  }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "Test obtained successfully.",
+                      "content": {
+                          "application/json": {
+                              "schema": {
+                                  "type": "object",
+                                  "properties": {
+                                      "_id": {
+                                          "type": "string",
+                                          "description": "Test ID"
+                                      },
+                                      "title": {
+                                          "type": "string",
+                                          "description": "Test title"
+                                      },
+                                      "questions": {
+                                          "type": "array",
+                                          "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                  "description": {
+                                                      "type": "string",
+                                                      "description": "Question description"
+                                                  },
+                                                  "optionA": {
+                                                      "type": "string",
+                                                      "description": "Question option A"
+                                                  },
+                                                  "optionB": {
+                                                      "type": "string",
+                                                      "description": "Question option B"
+                                                  },
+                                                  "optionC": {
+                                                      "type": "string",
+                                                      "description": "Question option C"
+                                                  },
+                                                  "optionD": {
+                                                      "type": "string",
+                                                      "description": "Question option D"
+                                                  },
+                                                  "optionE": {
+                                                      "type": "string",
+                                                      "description": "Question option E"
+                                                  },
+                                                  "correctOption": {
+                                                      "type": "string",
+                                                      "description": "Correct option for the question"
+                                                  },
+                                                  "_id": {
+                                                      "type": "string",
+                                                      "description": "Question ID"
+                                                  },
+                                                  "createdAt": {
+                                                      "type": "string",
+                                                      "format": "date-time",
+                                                      "description": "Question creation date"
+                                                  },
+                                                  "updatedAt": {
+                                                      "type": "string",
+                                                      "format": "date-time",
+                                                      "description": "Question update date"
+                                                  }
+                                              }
+                                          }
+                                      },
+                                      "createdAt": {
+                                          "type": "string",
+                                          "format": "date-time",
+                                          "description": "Test creation date"
+                                      },
+                                      "updatedAt": {
+                                          "type": "string",
+                                          "format": "date-time",
+                                          "description": "Test update date"
+                                      },
+                                      "__v": {
+                                          "type": "integer",
+                                          "description": "Test version"
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          },
+          "delete": {
+              "summary": "Delete test",
+              "description": "Deletes a test by its ID.",
+              "parameters": [
+                  {
+                      "in": "path",
+                      "name": "id",
+                      "schema": {
+                          "type": "string"
+                      },
+                      "required": true,
+                      "description": "Test ID"
+                  }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "Test deleted successfully.",
+                      "content": {
+                          "application/json": {
+                              "schema": {
+                                  "type": "object",
+                                  "properties": {
+                                      "_id": {
+                                          "type": "string",
+                                          "description": "Test ID"
+                                      },
+                                      "title": {
+                                          "type": "string",
+                                          "description": "Test title"
+                                      },
+                                      "questions": {
+                                          "type": "array",
+                                          "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                  "description": {
+                                                      "type": "string",
+                                                      "description": "Question description"
+                                                  },
+                                                  "optionA": {
+                                                      "type": "string",
+                                                      "description": "Question option A"
+                                                  },
+                                                  "optionB": {
+                                                      "type": "string",
+                                                      "description": "Question option B"
+                                                  },
+                                                  "optionC": {
+                                                      "type": "string",
+                                                      "description": "Question option C"
+                                                  },
+                                                  "optionD": {
+                                                      "type": "string",
+                                                      "description": "Question option D"
+                                                  },
+                                                  "optionE": {
+                                                      "type": "string",
+                                                      "description": "Question option E"
+                                                  },
+                                                  "correctOption": {
+                                                      "type": "string",
+                                                      "description": "Correct option for the question"
+                                                  },
+                                                  "_id": {
+                                                      "type": "string",
+                                                      "description": "Question ID"
+                                                  },
+                                                  "createdAt": {
+                                                      "type": "string",
+                                                      "format": "date-time",
+                                                      "description": "Question creation date"
+                                                  },
+                                                  "updatedAt": {
+                                                      "type": "string",
+                                                      "format": "date-time",
+                                                      "description": "Question update date"
+                                                  }
+                                              }
+                                          }
+                                      },
+                                      "createdAt": {
+                                          "type": "string",
+                                          "format": "date-time",
+                                          "description": "Test creation date"
+                                      },
+                                      "updatedAt": {
+                                          "type": "string",
+                                          "format": "date-time",
+                                          "description": "Test update date"
+                                      },
+                                      "__v": {
+                                          "type": "integer",
+                                          "description": "Test version"
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          },
+          "put": {
+              "summary": "Update test",
+              "description": "Updates a test by its ID.",
+              "parameters": [
+                  {
+                      "in": "path",
+                      "name": "id",
+                      "schema": {
+                          "type": "string"
+                      },
+                      "required": true,
+                      "description": "Test ID"
+                  }
+              ],
+              "requestBody": {
+                  "description": "Updated test information",
+                  "required": true,
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "type": "object",
+                              "properties": {
+                                  "title": {
+                                      "type": "string",
+                                      "description": "Test title"
+                                  },
+                                  "questions": {
+                                      "type": "array",
+                                      "items": {
+                                          "type": "object",
+                                          "properties": {
+                                              "description": {
+                                                  "type": "string",
+                                                  "description": "Question description"
+                                              },
+                                              "optionA": {
+                                                  "type": "string",
+                                                  "description": "Question option A"
+                                              },
+                                              "optionB": {
+                                                  "type": "string",
+                                                  "description": "Question option B"
+                                              },
+                                              "optionC": {
+                                                  "type": "string",
+                                                  "description": "Question option C"
+                                              },
+                                              "optionD": {
+                                                  "type": "string",
+                                                  "description": "Question option D"
+                                              },
+                                              "optionE": {
+                                                  "type": "string",
+                                                  "description": "Question option E"
+                                              },
+                                              "correctOption": {
+                                                  "type": "string",
+                                                  "description": "Correct option for the question"
+                                              },
+                                              "_id": {
+                                                  "type": "string",
+                                                  "description": "Question ID"
+                                              },
+                                              "createdAt": {
+                                                  "type": "string",
+                                                  "format": "date-time",
+                                                  "description": "Question creation date"
+                                              },
+                                              "updatedAt": {
+                                                  "type": "string",
+                                                  "format": "date-time",
+                                                  "description": "Question update date"
+                                              }
+                                          }
+                                      }
+                                  }
+                              },
+                              "required": [
+                                  "title",
+                                  "questions"
+                              ]
+                          }
+                      }
+                  }
+              },
+              "responses": {
+                  "200": {
+                      "description": "Test successfully updated.",
+                      "content": {
+                          "application/json": {
+                              "schema": {
+                                  "type": "object",
+                                  "properties": {
+                                      "_id": {
+                                          "type": "string",
+                                          "description": "Test ID"
+                                      },
+                                      "title": {
+                                          "type": "string",
+                                          "description": "Test title"
+                                      },
+                                      "questions": {
+                                          "type": "array",
+                                          "items": {
+                                              "type": "object",
+                                              "properties": {
+                                                  "description": {
+                                                      "type": "string",
+                                                      "description": "Question description"
+                                                  },
+                                                  "optionA": {
+                                                      "type": "string",
+                                                      "description": "Question option A"
+                                                  },
+                                                  "optionB": {
+                                                      "type": "string",
+                                                      "description": "Question option B"
+                                                  },
+                                                  "optionC": {
+                                                      "type": "string",
+                                                      "description": "Question option C"
+                                                  },
+                                                  "optionD": {
+                                                      "type": "string",
+                                                      "description": "Question option D"
+                                                  },
+                                                  "optionE": {
+                                                      "type": "string",
+                                                      "description": "Question option E"
+                                                  },
+                                                  "correctOption": {
+                                                      "type": "string",
+                                                      "description": "Correct option for the question"
+                                                  },
+                                                  "_id": {
+                                                      "type": "string",
+                                                      "description": "Question ID"
+                                                  },
+                                                  "createdAt": {
+                                                      "type": "string",
+                                                      "format": "date-time",
+                                                      "description": "Question creation date"
+                                                  },
+                                                  "updatedAt": {
+                                                      "type": "string",
+                                                      "format": "date-time",
+                                                      "description": "Question update date"
+                                                  }
+                                              }
+                                          }
+                                      },
+                                      "createdAt": {
+                                          "type": "string",
+                                          "format": "date-time",
+                                          "description": "Test creation date"
+                                      },
+                                      "updatedAt": {
+                                          "type": "string",
+                                          "format": "date-time",
+                                          "description": "Test update date"
+                                      },
+                                      "__v": {
+                                          "type": "integer",
+                                          "description": "Test version"
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+        },
+        "/questions": {
+          "get": {
+              "summary": "Get list of questions",
+              "description": "Returns a list of questions.",
+              "responses": {
+                  "200": {
+                      "description": "List of questions successfully obtained.",
+                      "content": {
+                          "application/json": {
+                              "schema": {
+                                  "type": "array",
+                                  "items": {
+                                      "type": "object",
+                                      "properties": {
+                                          "_id": {
+                                              "type": "string",
+                                              "description": "Question ID"
+                                          },
+                                          "title": {
+                                              "type": "string",
+                                              "description": "Question title"
+                                          },
+                                          "questions": {
+                                              "type": "array",
+                                              "items": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                      "description": {
+                                                          "type": "string",
+                                                          "description": "Question description"
+                                                      },
+                                                      "optionA": {
+                                                          "type": "string",
+                                                          "description": "Question option A"
+                                                      },
+                                                      "optionB": {
+                                                          "type": "string",
+                                                          "description": "Question option B"
+                                                      },
+                                                      "optionC": {
+                                                          "type": "string",
+                                                          "description": "Question option C"
+                                                      },
+                                                      "optionD": {
+                                                          "type": "string",
+                                                          "description": "Question option D"
+                                                      },
+                                                      "optionE": {
+                                                          "type": "string",
+                                                          "description": "Question option E"
+                                                      },
+                                                      "correctOption": {
+                                                          "type": "string",
+                                                          "description": "Correct option for the question"
+                                                      },
+                                                      "_id": {
+                                                          "type": "string",
+                                                          "description": "Question ID"
+                                                      },
+                                                      "createdAt": {
+                                                          "type": "string",
+                                                          "format": "date-time",
+                                                          "description": "Question creation date"
+                                                      },
+                                                      "updatedAt": {
+                                                          "type": "string",
+                                                          "format": "date-time",
+                                                          "description": "Question update date"
+                                                      }
+                                                  },
+                                                  "required": [
+                                                      "description",
+                                                      "optionA",
+                                                      "optionB",
+                                                      "optionC",
+                                                      "optionD",
+                                                      "optionE",
+                                                      "correctOption"
+                                                  ]
+                                              }
+                                          },
+                                          "createdAt": {
+                                              "type": "string",
+                                              "format": "date-time",
+                                              "description": "Question creation date"
+                                          },
+                                          "updatedAt": {
+                                              "type": "string",
+                                              "format": "date-time",
+                                              "description": "Question update date"
+                                          },
+                                          "__v": {
+                                              "type": "integer",
+                                              "description": "Question version"
+                                          }
+                                      },
+                                      "required": [
+                                          "_id",
+                                          "title",
+                                          "questions",
+                                          "createdAt",
+                                          "updatedAt",
+                                          "__v"
+                                      ]
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          },
+          "post": {
+              "summary": "Add new question",
+              "description": "Adds a new question.",
+              "requestBody": {
+                  "description": "New question information",
+                  "required": true,
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "type": "object",
+                              "properties": {
+                                  "title": {
+                                      "type": "string",
+                                      "description": "Question title"
+                                  },
+                                  "questions": {
+                                      "type": "array",
+                                      "items": {
+                                          "type": "object",
+                                          "properties": {
+                                              "description": {
+                                                  "type": "string",
+                                                  "description": "Question description"
+                                              },
+                                              "optionA": {
+                                                  "type": "string",
+                                                  "description": "Question option A"
+                                              },
+                                              "optionB": {
+                                                  "type": "string",
+                                                  "description": "Question option B"
+                                              },
+                                              "optionC": {
+                                                  "type": "string",
+                                                  "description": "Question option C"
+                                              },
+                                              "optionD": {
+                                                  "type": "string",
+                                                  "description": "Question option D"
+                                              },
+                                              "optionE": {
+                                                  "type": "string",
+                                                  "description": "Question option E"
+                                              },
+                                              "correctOption": {
+                                                  "type": "string",
+                                                  "description": "Correct option for the question"
+                                              }
+                                          },
+                                          "required": [
+                                              "description",
+                                              "optionA",
+                                              "optionB",
+                                              "optionC",
+                                              "optionD",
+                                              "optionE",
+                                              "correctOption"
+                                          ]
+                                      }
+                                  }
+                              },
+                              "required": [
+                                  "title",
+                                  "questions"
+                              ]
+                          }
+                      }
+                  }
+              },
+              "responses": {
+                  "200": {
+                      "description": "New question added successfully."
+                  }
+              }
+          }
+        },
+        "/questions/{id}": {
+          "get": {
+              "summary": "Obter um question específico",
+              "description": "Retorna um question específico com base no ID fornecido.",
+              "parameters": [
+                  {
+                      "name": "id",
+                      "in": "path",
+                      "required": true,
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "ID do question"
+                  }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "question obtido com sucesso."
+                  }
+              }
+          },
+          "delete": {
+              "summary": "Excluir um question específico",
+              "description": "Exclui um question específico com base no ID fornecido.",
+              "parameters": [
+                  {
+                      "name": "id",
+                      "in": "path",
+                      "required": true,
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "ID do question"
+                  }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "question excluído com sucesso."
+                  }
+              }
+          },
+          "put": {
+              "summary": "Atualizar um question específico",
+              "description": "Atualiza um question específico com base no ID fornecido.",
+              "parameters": [
+                  {
+                      "name": "id",
+                      "in": "path",
+                      "required": true,
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "ID do question"
+                  }
+              ],
+              "requestBody": {
+                  "description": "Informações atualizadas do question",
+                  "required": true,
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "type": "object",
+                              "properties": {
+                                  "title": {
+                                      "type": "string",
+                                      "description": "Título do question"
+                                  },
+                                  "questions": {
+                                      "type": "array",
+                                      "items": {
+                                          "type": "object",
+                                          "properties": {
+                                              "description": {
+                                                  "type": "string",
+                                                  "description": "Descrição da pergunta"
+                                              },
+                                              "optionA": {
+                                                  "type": "string",
+                                                  "description": "Opção A da pergunta"
+                                              },
+                                              "optionB": {
+                                                  "type": "string",
+                                                  "description": "Opção B da pergunta"
+                                              },
+                                              "optionC": {
+                                                  "type": "string",
+                                                  "description": "Opção C da pergunta"
+                                              },
+                                              "optionD": {
+                                                  "type": "string",
+                                                  "description": "Opção D da pergunta"
+                                              },
+                                              "optionE": {
+                                                  "type": "string",
+                                                  "description": "Opção E da pergunta"
+                                              },
+                                              "correctOption": {
+                                                  "type": "string",
+                                                  "description": "Opção correta da pergunta"
+                                              }
+                                          },
+                                          "required": [
+                                              "description",
+                                              "optionA",
+                                              "optionB",
+                                              "optionC",
+                                              "optionD",
+                                              "optionE",
+                                              "correctOption"
+                                          ]
+                                      }
+                                  }
+                              },
+                              "required": [
+                                  "title",
+                                  "questions"
+                              ]
+                          }
+                      }
+                  }
+              },
+              "responses": {
+                  "200": {
+                      "description": "question atualizado com sucesso."
+                  }
+              }
+          }
+        },
+        "/tests/{idTest}/results": {
+          "get": {
+              "summary": "Get results of a specific test",
+              "description": "Returns the results of a specific test based on the provided test ID.",
+              "parameters": [
+                  {
+                      "name": "idTest",
+                      "in": "path",
+                      "required": true,
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Test ID"
+                  }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "Array of results obtained successfully.",
+                      "content": {
+                          "application/json": {
+                              "schema": {
+                                  "type": "array",
+                                  "items": {
+                                      "type": "object",
+                                      "properties": {
+                                          "_id": {
+                                              "type": "string",
+                                              "description": "Result ID"
+                                          },
+                                          "studantName": {
+                                              "type": "string",
+                                              "description": "Student's name"
+                                          },
+                                          "test": {
+                                              "type": "null",
+                                              "description": "Associated test"
+                                          },
+                                          "answeredQuestionsCount": {
+                                              "type": "integer",
+                                              "description": "Number of answered questions"
+                                          },
+                                          "correctQuestionsCount": {
+                                              "type": "integer",
+                                              "description": "Number of correct questions"
+                                          },
+                                          "questionsCount": {
+                                              "type": "integer",
+                                              "description": "Total number of questions"
+                                          },
+                                          "createdAt": {
+                                              "type": "string",
+                                              "format": "date-time",
+                                              "description": "Result creation date"
+                                          },
+                                          "updatedAt": {
+                                              "type": "string",
+                                              "format": "date-time",
+                                              "description": "Result update date"
+                                          },
+                                          "__v": {
+                                              "type": "integer",
+                                              "description": "Result version"
+                                          }
+                                      },
+                                      "required": [
+                                          "_id",
+                                          "studantName",
+                                          "test",
+                                          "answeredQuestionsCount",
+                                          "correctQuestionsCount",
+                                          "questionsCount",
+                                          "createdAt",
+                                          "updatedAt",
+                                          "__v"
+                                      ]
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          },
+          "put": {
+              "summary": "Update result of a specific test",
+              "description": "Updates the result of a specific test based on the provided test ID.",
+              "parameters": [
+                  {
+                      "name": "idTest",
+                      "in": "path",
+                      "required": true,
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Test ID"
+                  }
+              ],
+              "requestBody": {
+                  "description": "Updated result information",
+                  "required": true,
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "type": "object",
+                              "properties": {
+                                  "studantName": {
+                                      "type": "string",
+                                      "description": "Student's name"
+                                  },
+                                  "answeredQuestionsCount": {
+                                      "type": "integer",
+                                      "description": "Number of answered questions"
+                                  },
+                                  "correctQuestionsCount": {
+                                      "type": "integer",
+                                      "description": "Number of correct questions"
+                                  },
+                                  "questionsCount": {
+                                      "type": "integer",
+                                      "description": "Total number of questions"
+                                  }
+                              },
+                              "required": [
+                                  "studantName",
+                                  "answeredQuestionsCount",
+                                  "correctQuestionsCount",
+                                  "questionsCount"
+                              ]
+                          }
+                      }
+                  }
+              },
+              "responses": {
+                  "200": {
+                      "description": "Result updated successfully.",
+                      "content": {
+                          "application/json": {
+                              "schema": {
+                                  "type": "object",
+                                  "properties": {
+                                      "_id": {
+                                          "type": "string",
+                                          "description": "Result ID"
+                                      },
+                                      "studantName": {
+                                          "type": "string",
+                                          "description": "Student's name"
+                                      },
+                                      "test": {
+                                          "type": "null",
+                                          "description": "Associated test"
+                                      },
+                                      "answeredQuestionsCount": {
+                                          "type": "integer",
+                                          "description": "Number of answered questions"
+                                      },
+                                      "correctQuestionsCount": {
+                                          "type": "integer",
+                                          "description": "Number of correct questions"
+                                      },
+                                      "questionsCount": {
+                                          "type": "integer",
+                                          "description": "Total number of questions"
+                                      },
+                                      "createdAt": {
+                                          "type": "string",
+                                          "format": "date-time",
+                                          "description": "Result creation date"
+                                      },
+                                      "updatedAt": {
+                                          "type": "string",
+                                          "format": "date-time",
+                                          "description": "Result update date"
+                                      },
+                                      "__v": {
+                                          "type": "integer",
+                                          "description": "Result version"
+                                      }
+                                  },
+                                  "required": [
+                                      "_id",
+                                      "studantName",
+                                      "test",
+                                      "answeredQuestionsCount",
+                                      "correctQuestionsCount",
+                                      "questionsCount",
+                                      "createdAt",
+                                      "updatedAt",
+                                      "__v"
+                                  ]
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+        },
+        "/tests/results/:idResult": {
+          "get": {
+              "summary": "Get specific result",
+              "description": "Returns a specific result based on the provided result ID.",
+              "parameters": [
+                  {
+                      "name": "idResult",
+                      "in": "path",
+                      "required": true,
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Result ID"
+                  }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "Result obtained successfully.",
+                      "content": {
+                          "application/json": {
+                              "schema": {
+                                  "type": "object",
+                                  "properties": {
+                                      "_id": {
+                                          "type": "string",
+                                          "description": "Result ID"
+                                      },
+                                      "studantName": {
+                                          "type": "string",
+                                          "description": "Student's name"
+                                      },
+                                      "test": {
+                                          "type": "null",
+                                          "description": "Associated test"
+                                      },
+                                      "answeredQuestionsCount": {
+                                          "type": "integer",
+                                          "description": "Number of answered questions"
+                                      },
+                                      "correctQuestionsCount": {
+                                          "type": "integer",
+                                          "description": "Number of correct questions"
+                                      },
+                                      "questionsCount": {
+                                          "type": "integer",
+                                          "description": "Total number of questions"
+                                      },
+                                      "createdAt": {
+                                          "type": "string",
+                                          "format": "date-time",
+                                          "description": "Result creation date"
+                                      },
+                                      "updatedAt": {
+                                          "type": "string",
+                                          "format": "date-time",
+                                          "description": "Result update date"
+                                      },
+                                      "__v": {
+                                          "type": "integer",
+                                          "description": "Result version"
+                                      }
+                                  },
+                                  "required": [
+                                      "_id",
+                                      "studantName",
+                                      "test",
+                                      "answeredQuestionsCount",
+                                      "correctQuestionsCount",
+                                      "questionsCount",
+                                      "createdAt",
+                                      "updatedAt",
+                                      "__v"
+                                  ]
+                              }
+                          }
+                      }
+                  }
+              }
+          },
+          "delete": {
+              "summary": "Delete specific result",
+              "description": "Deletes a specific result based on the provided result ID.",
+              "parameters": [
+                  {
+                      "name": "idResult",
+                      "in": "path",
+                      "required": true,
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Result ID"
+                  }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "Result deleted successfully.",
+                      "content": {
+                          "application/json": {
+                              "schema": {
+                                  "type": "object",
+                                  "properties": {
+                                      "_id": {
+                                          "type": "string",
+                                          "description": "Result ID"
+                                      },
+                                      "studantName": {
+                                          "type": "string",
+                                          "description": "Student's name"
+                                      },
+                                      "test": {
+                                          "type": "null",
+                                          "description": "Associated test"
+                                      },
+                                      "answeredQuestionsCount": {
+                                          "type": "integer",
+                                          "description": "Number of answered questions"
+                                      },
+                                      "correctQuestionsCount": {
+                                          "type": "integer",
+                                          "description": "Number of correct questions"
+                                      },
+                                      "questionsCount": {
+                                          "type": "integer",
+                                          "description": "Total number of questions"
+                                      },
+                                      "createdAt": {
+                                          "type": "string",
+                                          "format": "date-time",
+                                          "description": "Result creation date"
+                                      },
+                                      "updatedAt": {
+                                          "type": "string",
+                                          "format": "date-time",
+                                          "description": "Result update date"
+                                      },
+                                      "__v": {
+                                          "type": "integer",
+                                          "description": "Result version"
+                                      }
+                                  },
+                                  "required": [
+                                      "_id",
+                                      "studantName",
+                                      "test",
+                                      "answeredQuestionsCount",
+                                      "correctQuestionsCount",
+                                      "questionsCount",
+                                      "createdAt",
+                                      "updatedAt",
+                                      "__v"
+                                  ]
+                              }
+                          }
+                      }
+                  }
+              }
+          },
+          "put": {
+              "summary": "Update specific result",
+              "description": "Updates a specific result based on the provided result ID.",
+              "parameters": [
+                  {
+                      "name": "idResult",
+                      "in": "path",
+                      "required": true,
+                      "schema": {
+                          "type": "string"
+                      },
+                      "description": "Result ID"
+                  }
+              ],
+              "requestBody": {
+                  "description": "Updated information of the result",
+                  "required": true,
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "type": "object",
+                              "properties": {
+                                  "studantName": {
+                                      "type": "string",
+                                      "description": "Student's name"
+                                  },
+                                  "answeredQuestionsCount": {
+                                      "type": "integer",
+                                      "description": "Number of answered questions"
+                                  },
+                                  "correctQuestionsCount": {
+                                      "type": "integer",
+                                      "description": "Number of correct questions"
+                                  },
+                                  "questionsCount": {
+                                      "type": "integer",
+                                      "description": "Total number of questions"
+                                  }
+                              },
+                              "required": [
+                                  "studantName",
+                                  "answeredQuestionsCount",
+                                  "correctQuestionsCount",
+                                  "questionsCount"
+                              ]
+                          }
+                      }
+                  }
+              },
+              "responses": {
+                  "200": {
+                      "description": "Result updated successfully.",
+                      "content": {
+                          "application/json": {
+                              "schema": {
+                                  "type": "object",
+                                  "properties": {
+                                      "_id": {
+                                          "type": "string",
+                                          "description": "Result ID"
+                                      },
+                                      "studantName": {
+                                          "type": "string",
+                                          "description": "Student's name"
+                                      },
+                                      "test": {
+                                          "type": "null",
+                                          "description": "Associated test"
+                                      },
+                                      "answeredQuestionsCount": {
+                                          "type": "integer",
+                                          "description": "Number of answered questions"
+                                      },
+                                      "correctQuestionsCount": {
+                                          "type": "integer",
+                                          "description": "Number of correct questions"
+                                      },
+                                      "questionsCount": {
+                                          "type": "integer",
+                                          "description": "Total number of questions"
+                                      },
+                                      "createdAt": {
+                                          "type": "string",
+                                          "format": "date-time",
+                                          "description": "Result creation date"
+                                      },
+                                      "updatedAt": {
+                                          "type": "string",
+                                          "format": "date-time",
+                                          "description": "Result update date"
+                                      },
+                                      "__v": {
+                                          "type": "integer",
+                                          "description": "Result version"
+                                      }
+                                  },
+                                  "required": [
+                                      "_id",
+                                      "studantName",
+                                      "test",
+                                      "answeredQuestionsCount",
+                                      "correctQuestionsCount",
+                                      "questionsCount",
+                                      "createdAt",
+                                      "updatedAt",
+                                      "__v"
+                                  ]
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      }
+    }
+}
