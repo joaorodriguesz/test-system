@@ -4,15 +4,14 @@ const TestComponent = () => {
   const [tests, setTests] = useState([]);
 
   const save = () => {
-    const testDescricao = document.querySelector("#test-descricao");
+    let testDescricao = document.getElementById('test-descricao').value;
 
     let newTest = {
-      id: 0,
-      descricao: testDescricao.value,
-      perguntas: [],
+      title: testDescricao,
+      questions: [],
     };
 
-    testDescricao.value = '';
+    testDescricao = '';
 
     fetch("http://localhost:8080/api/tests", {
       method: "POST",
@@ -26,28 +25,25 @@ const TestComponent = () => {
     });
   };
 
-  const remove = (id) => {
+  const modify = (id) => {
+    let testDescricao = document.getElementById('test-descricao-' + id).value;
+
+    let testeEditado = {
+      title: testDescricao,
+      questions: [],
+    };
+
+    testDescricao = '';
+
     fetch(`http://localhost:8080/api/tests/${id}`, {
-      method: 'DELETE'
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(testeEditado),
     })
     .then(() => {
       loadPage();
-    });
-  };
-
-  const modify = (id) => {
-    const testDescricaoMod = document.querySelector("#test-descricao-mod-" + id);
-
-    let descricao = testDescricaoMod.value;
-    testDescricaoMod.value = '';
-
-    fetch(`http://localhost:8080/api/tests/${id}`, {
-      method: 'GET'
-    })
-    .then((response) => response.json())
-    .then((response) => {
-      response.descricao = descricao;
-
     });
   };
 
@@ -61,6 +57,16 @@ const TestComponent = () => {
     });
   };
 
+const deleteTeste = (id) => {
+  fetch(`http://localhost:8080/api/tests/${id}`, {
+    method: 'DELETE'
+  })
+  .then((response) => response.json())
+  .then((data) => {
+    loadPage();
+  });
+};
+
   useEffect(() => {
     loadPage();
   }, []);
@@ -72,8 +78,8 @@ const TestComponent = () => {
       <div className="container-fluid">
         <div className="row mt-2">
           <div className="col-md-12">
-            <button type="button" className="btn btn-sm btn-primary" data-toggle="modal" data-target="#cadModal">
-              Cadastrar
+            <button type="button" class="btn btn-primary btn-sm me-3" data-bs-toggle="modal" data-bs-target="#cadModal">
+            Cadastrar
             </button>
             <a className="btn btn-sm btn-secondary" href="/">Voltar</a>
           </div>
@@ -86,11 +92,11 @@ const TestComponent = () => {
             </div>
           </div>
           <table className="table table-sm table-striped table-hover table-bordered mb-3" id="main-table">
-            <thead className="bg-dark text-white">
+            <thead>
               <tr>
-                <th width="5%">Código</th>
-                <th width="85%">Descrição</th>
-                <th width="10%"></th>
+                <th width="10%">Código</th>
+                <th width="75%">Descrição</th>
+                <th width="15%"></th>
               </tr>
             </thead>
             <tbody>
@@ -102,10 +108,10 @@ const TestComponent = () => {
                     <a type="button" href={`test/${test._id}/question`} title="Cadastrar" className="btn btn-sm btn-success m-1">
                       <i class="bi bi-plus-circle-fill"></i>
                     </a>
-                    <button type="button" className="btn btn-sm btn-primary m-1" data-toggle="modal" data-target={`#modModal-${test._id}`}>
-                      <i class="bi bi-pencil-fill"></i>
+                    <button type="button" className="btn btn-sm btn-primary m-1" data-bs-toggle="modal" data-bs-target={`#cadModal-${test._id}`}>
+                      <i className="bi bi-pencil-fill"></i>
                     </button>
-                    <button type="button" onClick={() => remove(test._id)} className="btn btn-sm btn-danger">
+                    <button type="button" onClick={() => deleteTeste(test._id)} className="btn btn-sm btn-danger">
                       <i class="bi bi-trash-fill"></i>
                     </button>
                   </td>
@@ -115,43 +121,38 @@ const TestComponent = () => {
           </table>
         </div>
       </div>
-
       <div className="modal fade" id="cadModal" tabIndex="-1" role="dialog" aria-labelledby="cadModal" aria-hidden="true">
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title" id="cadModal">Cadastrar Teste</h5>
-              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+              <h5 className="modal-title" id="cadModal">Cadastrar Teste</h5>  
             </div>
             <div className="modal-body">
-              <label htmlFor="descricao">Descrição</label>
+              <label htmlFor="descricao">Nome do Teste</label>
               <input type="text" name="descricao" id="test-descricao" className="form-control form-control-sm" />
             </div>
             <div className="modal-footer">
-              <button type="button" onClick={save} data-dismiss="modal" className="btn btn-primary">Salvar</button>
+              <button type="button" onClick={save} data-bs-dismiss="modal" className="btn btn-primary">Salvar</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
             </div>
           </div>
         </div>
       </div>
-
+                
       {tests.map((test) => (
-        <div className="modal fade" id={`modModal-${test._id}`} tabIndex="-1" role="dialog" aria-labelledby="modModal" aria-hidden="true" key={test._id}>
+        <div className="modal fade" id={`cadModal-${test._id}`} tabIndex="-1" role="dialog" aria-labelledby={`cadModal-${test._id}`} aria-hidden="true" key={test._id}>
           <div className="modal-dialog" role="document">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title" id="modModal">Editar Teste</h5>
-                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
+                <h5 className="modal-title" id={`cadModal-${test._id}`}>Editar Nome do Teste</h5>
               </div>
               <div className="modal-body">
-                <label htmlFor={`test-descricao-mod-${test._id}`}>Descrição</label>
-                <input type="text" name="descricao" value={test.descricao} id={`test-descricao-mod-${test._id}`} className="form-control form-control-sm" />
+                <label htmlFor={`test-descricao-${test._id}`}>Nome do Teste</label>
+                <input type="text" name="descricao" id={`test-descricao-${test._id}`} defaultValue={test.title} className="form-control form-control-sm" />
               </div>
               <div className="modal-footer">
-                <button type="button" onClick={() => modify(test._id)} data-dismiss="modal" className="btn btn-primary">Salvar</button>
+                <button type="button" onClick={() => modify(test._id)} data-bs-dismiss="modal" className="btn btn-primary">Salvar</button>
+                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
               </div>
             </div>
           </div>
