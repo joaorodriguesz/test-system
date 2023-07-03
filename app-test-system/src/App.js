@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Routes, Route, Link } from "react-router-dom";
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
