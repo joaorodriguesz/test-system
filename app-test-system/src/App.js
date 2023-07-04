@@ -13,12 +13,12 @@ class App extends Component {
     return (
       <div>
         <nav className="navbar navbar-expand navbar-dark bg-dark">
-          <Link to={"/tutorials"} className="navbar-brand">
+          <Link to={"/teste"} className="navbar-brand">
             Test-system
           </Link>
           <div className="navbar-nav mr-auto">
             <li className="nav-item">
-              <Link to={"/tutorials"} className="nav-link">
+              <Link to={"/teste"} className="nav-link">
                 Register Test
               </Link>
             </li>
@@ -33,9 +33,9 @@ class App extends Component {
         <div className="container-fluid">
           <Routes>
             <Route path="/" element={<TestRegister/>} />
-            <Route path="/tutorials" element={<TestRegister/>} />
+            <Route path="/teste" element={<TestRegister/>} />
             <Route path="/add" element={<AddTutorial/>} />
-            <Route path="/tutorials/:id" element={<Tutorial/>} />
+            <Route path="/teste/:id" element={<Tutorial/>} />
           </Routes>
         </div>
       </div>

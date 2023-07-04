@@ -13,3 +13,8 @@
   max-width: 300px;
   margin: auto;
 }
+
+.custom-modal .modal-dialog {
+  width: 95%;
+  max-width: none;
+}
