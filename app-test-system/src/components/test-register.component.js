@@ -42,9 +42,9 @@ const TestComponent = () => {
       },
       body: JSON.stringify(newTest),
     })
-    .then(() => {
-      loadPage();
-    });
+      .then(() => {
+        loadPage();
+      });
   };
 
   const modify = (teste) => {
@@ -61,30 +61,30 @@ const TestComponent = () => {
       },
       body: JSON.stringify(testeEditado),
     })
-    .then(() => {
-      loadPage();
-    });
+      .then(() => {
+        loadPage();
+      });
   };
 
   const loadPage = () => {
     fetch(`http://localhost:8080/api/tests`, {
       method: 'GET'
     })
-    .then((response) => response.json())
-    .then((data) => {
-      setTests(data);
-    });
+      .then((response) => response.json())
+      .then((data) => {
+        setTests(data);
+      });
   };
 
-const deleteTeste = (id) => {
-  fetch(`http://localhost:8080/api/tests/${id}`, {
-    method: 'DELETE'
-  })
-  .then((response) => response.json())
-  .then((data) => {
-    loadPage();
-  });
-};
+  const deleteTeste = (id) => {
+    fetch(`http://localhost:8080/api/tests/${id}`, {
+      method: 'DELETE'
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        loadPage();
+      });
+  };
 
   useEffect(() => {
     loadPage();
@@ -98,7 +98,7 @@ const deleteTeste = (id) => {
         <div className="row mt-2">
           <div className="col-md-12">
             <button type="button" class="btn btn-primary btn-sm me-3" data-bs-toggle="modal" data-bs-target="#cadModal">
-            Cadastrar
+              Cadastrar
             </button>
             <a className="btn btn-sm btn-secondary" href="/">Voltar</a>
           </div>
@@ -138,57 +138,57 @@ const deleteTeste = (id) => {
         </div>
       </div>
       <div className="modal fade custom-modal" id="cadModal" tabIndex="-1" role="dialog" aria-labelledby="cadModal" aria-hidden="true">
-      <div className="modal-dialog modal-xl" role="document">
-        <div className="modal-content">
-          <div className="modal-header">
-            <h5 className="modal-title" id="cadModal">Cadastrar Teste</h5>
-          </div>
-          <div className="modal-body">
-            <label>Nome do Teste</label>
-            <input type="text" name="descricao" id='test-descricao' className="form-control form-control-sm" />
-          </div>
-          <hr className='m-3' ></hr>
-          <div className='row p-3'>
-            <div className='col-2'>
-              <button type="button" className="btn btn-success btn-sm" onClick={addQuestion}>Adicionar Questão</button>
+        <div className="modal-dialog modal-xl" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="cadModal">Cadastrar Teste</h5>
             </div>
-          </div>
-          <div className='table-responsive p-3'>
-            <table className='table table-sm table-striped table-hover font-12 table-bordered m-auto'>
-              <thead className='thead-dark'>
-                <tr>
-                  <th width="23%">Descrição</th>
-                  <th width="14%">A</th>
-                  <th width="14%">B</th>
-                  <th width="14%">C</th>
-                  <th width="14%">D</th>
-                  <th width="14%">E</th>
-                  <th width="5%">Correta</th>
-                </tr>
-              </thead>
-              <tbody>
-                {questions.map((question, index) => (
-                  <tr key={question.id}>
-                    <td><input className='form-control form-control-sm' value={question.description} onChange={(e) => handleQuestionChange(index, 'description', e.target.value)} /></td>
-                    <td><input className='form-control form-control-sm' value={question.optionA} onChange={(e) => handleQuestionChange(index, 'optionA', e.target.value)} /></td>
-                    <td><input className='form-control form-control-sm' value={question.optionB} onChange={(e) => handleQuestionChange(index, 'optionB', e.target.value)} /></td>
-                    <td><input className='form-control form-control-sm' value={question.optionC} onChange={(e) => handleQuestionChange(index, 'optionC', e.target.value)} /></td>
-                    <td><input className='form-control form-control-sm' value={question.optionD} onChange={(e) => handleQuestionChange(index, 'optionD', e.target.value)} /></td>
-                    <td><input className='form-control form-control-sm' value={question.optionE} onChange={(e) => handleQuestionChange(index, 'optionE', e.target.value)} /></td>
-                    <td><input className='form-control form-control-sm' value={question.correctOption} onChange={(e) => handleQuestionChange(index, 'correctOption', e.target.value)} /></td>
+            <div className="modal-body">
+              <label>Nome do Teste</label>
+              <input type="text" name="descricao" id='test-descricao' className="form-control form-control-sm" />
+            </div>
+            <hr className='m-3' ></hr>
+            <div className='row p-3'>
+              <div className='col-2'>
+                <button type="button" className="btn btn-success btn-sm" onClick={addQuestion}>Adicionar Questão</button>
+              </div>
+            </div>
+            <div className='table-responsive p-3'>
+              <table className='table table-sm table-striped table-hover font-12 table-bordered m-auto'>
+                <thead className='thead-dark'>
+                  <tr>
+                    <th width="23%">Descrição</th>
+                    <th width="14%">A</th>
+                    <th width="14%">B</th>
+                    <th width="14%">C</th>
+                    <th width="14%">D</th>
+                    <th width="14%">E</th>
+                    <th width="5%">Correta</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <div className="modal-footer">
-            <button type="button" onClick={save} data-bs-dismiss="modal" className="btn btn-primary">Salvar</button>
-            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </thead>
+                <tbody>
+                  {questions.map((question, index) => (
+                    <tr key={question.id}>
+                      <td><input className='form-control form-control-sm' value={question.description} onChange={(e) => handleQuestionChange(index, 'description', e.target.value)} /></td>
+                      <td><input className='form-control form-control-sm' value={question.optionA} onChange={(e) => handleQuestionChange(index, 'optionA', e.target.value)} /></td>
+                      <td><input className='form-control form-control-sm' value={question.optionB} onChange={(e) => handleQuestionChange(index, 'optionB', e.target.value)} /></td>
+                      <td><input className='form-control form-control-sm' value={question.optionC} onChange={(e) => handleQuestionChange(index, 'optionC', e.target.value)} /></td>
+                      <td><input className='form-control form-control-sm' value={question.optionD} onChange={(e) => handleQuestionChange(index, 'optionD', e.target.value)} /></td>
+                      <td><input className='form-control form-control-sm' value={question.optionE} onChange={(e) => handleQuestionChange(index, 'optionE', e.target.value)} /></td>
+                      <td><input className='form-control form-control-sm' value={question.correctOption} onChange={(e) => handleQuestionChange(index, 'correctOption', e.target.value)} /></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="modal-footer">
+              <button type="button" onClick={save} data-bs-dismiss="modal" className="btn btn-primary">Salvar</button>
+              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-                
+
       {tests.map((test) => (
         <div className="modal fade custom-modal" id={`cadModal-${test._id}`} tabIndex="-1" role="dialog" aria-labelledby={`cadModal-${test._id}`} aria-hidden="true" key={test._id}>
           <div className="modal-dialog modal-xl" role="document">
@@ -203,8 +203,8 @@ const deleteTeste = (id) => {
                     <input type="text" name="descricao" id={`test-descricao-${test._id}`} defaultValue={test.title} className="form-control form-control-sm" />
                   </div>
                 </div>
-                  <div className='table-responsive'>
-                    <hr></hr>
+                <div className='table-responsive'>
+                  <hr></hr>
                   <table className='table table-sm table-striped table-hover font-12 table-bordered m-auto'>
                     <thead className='thead-dark'>
                       <tr>
@@ -218,17 +218,17 @@ const deleteTeste = (id) => {
                       </tr>
                     </thead>
                     <tbody>
-                    {test.questions.map((question, index) => (
-                      <tr key={question._id}>
-                        <td><input className='form-control form-control-sm' id={`description-${index}`} defaultValue={question.description} /></td>
-                        <td><input className='form-control form-control-sm' id={`optionA-${index}`} defaultValue={question.optionA} /></td>
-                        <td><input className='form-control form-control-sm' id={`optionB-${index}`} defaultValue={question.optionB} /></td>
-                        <td><input className='form-control form-control-sm' id={`optionC-${index}`} defaultValue={question.optionC} /></td>
-                        <td><input className='form-control form-control-sm' id={`optionD-${index}`} defaultValue={question.optionD} /></td>
-                        <td><input className='form-control form-control-sm' id={`optionE-${index}`} defaultValue={question.optionE} /></td>
-                        <td><input className='form-control form-control-sm' id={`correctOption-${index}`} defaultValue={question.correctOption} /></td>
-                      </tr>
-                    ))}
+                      {test.questions.map((question, index) => (
+                        <tr key={question._id}>
+                          <td><input className='form-control form-control-sm' id={`description-${index}`} defaultValue={question.description} /></td>
+                          <td><input className='form-control form-control-sm' id={`optionA-${index}`} defaultValue={question.optionA} /></td>
+                          <td><input className='form-control form-control-sm' id={`optionB-${index}`} defaultValue={question.optionB} /></td>
+                          <td><input className='form-control form-control-sm' id={`optionC-${index}`} defaultValue={question.optionC} /></td>
+                          <td><input className='form-control form-control-sm' id={`optionD-${index}`} defaultValue={question.optionD} /></td>
+                          <td><input className='form-control form-control-sm' id={`optionE-${index}`} defaultValue={question.optionE} /></td>
+                          <td><input className='form-control form-control-sm' id={`correctOption-${index}`} defaultValue={question.correctOption} /></td>
+                        </tr>
+                      ))}
                     </tbody>
                   </table>
                 </div>
