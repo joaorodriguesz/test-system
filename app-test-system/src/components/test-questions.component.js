@@ -61,10 +61,10 @@ const TestResultComponent = () => {
     fetch(`http://localhost:8080/api/tests/${id}`, {
       method: 'GET'
     })
-    .then((response) => response.json())
-    .then((data) => {
-      setTests(data);
-    });
+      .then((response) => response.json())
+      .then((data) => {
+        setTests(data);
+      });
   };
 
   useEffect(() => {
