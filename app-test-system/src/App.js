@@ -4,9 +4,9 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
-import AddTutorial from "./components/add-tutorial.component";
-import Tutorial from "./components/tutorial.component";
+import TestQuestion from "./components/test-questions.component";
 import TestRegister from "./components/test-register.component";
+import TestList from "./components/test-list.component"
 
 class App extends Component {
   render() {
@@ -23,8 +23,8 @@ class App extends Component {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to={"/add"} className="nav-link">
-                Add
+              <Link to={"/test-list"} className="nav-link">
+                Tests
               </Link>
             </li>
           </div>
@@ -34,8 +34,8 @@ class App extends Component {
           <Routes>
             <Route path="/" element={<TestRegister/>} />
             <Route path="/teste" element={<TestRegister/>} />
-            <Route path="/add" element={<AddTutorial/>} />
-            <Route path="/teste/:id" element={<Tutorial/>} />
+            <Route path="/test-question/:id" element={<TestQuestion/>} />
+            <Route path="/test-list" element={<TestList/>} />
           </Routes>
         </div>
       </div>

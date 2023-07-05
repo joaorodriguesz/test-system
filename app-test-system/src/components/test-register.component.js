@@ -147,22 +147,23 @@ const deleteTeste = (id) => {
             <label>Nome do Teste</label>
             <input type="text" name="descricao" id='test-descricao' className="form-control form-control-sm" />
           </div>
-          <div className='row p-2'>
+          <hr className='m-3' ></hr>
+          <div className='row p-3'>
             <div className='col-2'>
               <button type="button" className="btn btn-success btn-sm" onClick={addQuestion}>Adicionar Questão</button>
             </div>
           </div>
-          <div className='table-responsive p-2'>
+          <div className='table-responsive p-3'>
             <table className='table table-sm table-striped table-hover font-12 table-bordered m-auto'>
               <thead className='thead-dark'>
                 <tr>
-                  <th width="40%">Descrição</th>
-                  <th width="10%">Opção A</th>
-                  <th width="10%">Opção B</th>
-                  <th width="10%">Opção C</th>
-                  <th width="10%">Opção D</th>
-                  <th width="10%">Opção E</th>
-                  <th width="10%">Opção Correta</th>
+                  <th width="23%">Descrição</th>
+                  <th width="14%">A</th>
+                  <th width="14%">B</th>
+                  <th width="14%">C</th>
+                  <th width="14%">D</th>
+                  <th width="14%">E</th>
+                  <th width="5%">Correta</th>
                 </tr>
               </thead>
               <tbody>
@@ -189,7 +190,7 @@ const deleteTeste = (id) => {
     </div>
                 
       {tests.map((test) => (
-        <div className="modal fade" id={`cadModal-${test._id}`} tabIndex="-1" role="dialog" aria-labelledby={`cadModal-${test._id}`} aria-hidden="true" key={test._id}>
+        <div className="modal fade custom-modal" id={`cadModal-${test._id}`} tabIndex="-1" role="dialog" aria-labelledby={`cadModal-${test._id}`} aria-hidden="true" key={test._id}>
           <div className="modal-dialog modal-xl" role="document">
             <div className="modal-content">
               <div className="modal-header">
@@ -197,23 +198,23 @@ const deleteTeste = (id) => {
               </div>
               <div className="modal-body">
                 <div className='row justify-content-center'>
-                  <div className='col-8'>
+                  <div className='col-12'>
                     <label htmlFor={`test-descricao-${test._id}`}>Nome do Teste</label>
                     <input type="text" name="descricao" id={`test-descricao-${test._id}`} defaultValue={test.title} className="form-control form-control-sm" />
                   </div>
                 </div>
-                  <div className='table-responsive p-2'>
+                  <div className='table-responsive'>
                     <hr></hr>
                   <table className='table table-sm table-striped table-hover font-12 table-bordered m-auto'>
                     <thead className='thead-dark'>
                       <tr>
-                        <th width="40%">Descrição</th>
-                        <th width="10%">Opção A</th>
-                        <th width="10%">Opção B</th>
-                        <th width="10%">Opção C</th>
-                        <th width="10%">Opção D</th>
-                        <th width="10%">Opção E</th>
-                        <th width="10%">Opção Correta</th>
+                        <th width="23%">Descrição</th>
+                        <th width="14%">A</th>
+                        <th width="14%">B</th>
+                        <th width="14%">C</th>
+                        <th width="14%">D</th>
+                        <th width="14%">E</th>
+                        <th width="5%">Correta</th>
                       </tr>
                     </thead>
                     <tbody>
