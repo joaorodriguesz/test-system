@@ -32,10 +32,10 @@ class App extends Component {
 
         <div className="container-fluid">
           <Routes>
-            <Route path="/" element={<TestRegister/>} />
-            <Route path="/teste" element={<TestRegister/>} />
-            <Route path="/test-question/:id" element={<TestQuestion/>} />
-            <Route path="/test-list" element={<TestList/>} />
+            <Route path="/" element={<TestRegister />} />
+            <Route path="/teste" element={<TestRegister />} />
+            <Route path="/test-question/:id" element={<TestQuestion />} />
+            <Route path="/test-list" element={<TestList />} />
           </Routes>
         </div>
       </div>
