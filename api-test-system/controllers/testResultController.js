@@ -1,9 +1,9 @@
 const TestResult = require('../models/TestResult');
 const { Test } = require('../models/Test');
 
-const testResultController  = {
-    
-    create: async(req, res) => {
+const testResultController = {
+
+    create: async (req, res) => {
 
         try {
             const testResult = {
@@ -15,7 +15,7 @@ const testResultController  = {
             };
 
             const response = await TestResult.create(testResult);
-            
+
             res.status(201).json(response);
         } catch (error) {
             res.status(400).json(error);
@@ -23,7 +23,7 @@ const testResultController  = {
     },
     getAll: async (req, res) => {
         try {
-            const tests = await  TestResult.find();
+            const tests = await TestResult.find();
 
             res.json(tests)
         } catch (error) {
@@ -34,8 +34,8 @@ const testResultController  = {
         try {
             const id = req.params.idResult;
             const testResult = await TestResult.findById(id);
-            
-            if(!testResult){
+
+            if (!testResult) {
                 return res.status(404).json("Register not found");
             }
 
@@ -48,8 +48,8 @@ const testResultController  = {
         try {
             const id = req.params.idResult;
             const testResult = await TestResult.findById(id);
-    
-            if(!testResult){
+
+            if (!testResult) {
                 return res.status(404).json("Register not found");
             }
 
@@ -74,7 +74,7 @@ const testResultController  = {
 
             const updatedTest = await TestResult.findByIdAndUpdate(id, testResult);
 
-            if(!testResult){
+            if (!testResult) {
                 return res.status(404).json("Register not found");
             }
 

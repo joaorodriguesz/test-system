@@ -11,6 +11,6 @@ router
     .route("/tests/results/:idResult")
     .get((req, res) => testResultController.get(req, res))
     .delete((req, res) => testResultController.delete(req, res))
-    .put((req, res) => testResultController.update(req, res));    
+    .put((req, res) => testResultController.update(req, res));
 
 module.exports = router;

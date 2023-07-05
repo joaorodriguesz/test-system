@@ -11,6 +11,6 @@ router
     .route("/questions/:id")
     .get((req, res) => questionController.get(req, res))
     .delete((req, res) => questionController.delete(req, res))
-    .put((req, res) => questionController.update(req, res)); 
+    .put((req, res) => questionController.update(req, res));
 
 module.exports = router;

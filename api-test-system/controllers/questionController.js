@@ -1,7 +1,7 @@
 const { Question } = require("../models/Question");
 
-const questionController  = {
-    create: async(req, res) => {
+const questionController = {
+    create: async (req, res) => {
         try {
             const question = {
                 description: req.body.description,
@@ -10,11 +10,11 @@ const questionController  = {
                 optionC: req.body.optionC,
                 optionD: req.body.optionD,
                 optionE: req.body.optionE,
-                correctOption:req.body.correctOption,
+                correctOption: req.body.correctOption,
             };
 
             const response = await Question.create(question);
-            
+
             res.status(201).json(response);
         } catch (error) {
             console.error(error);
@@ -22,7 +22,7 @@ const questionController  = {
     },
     getAll: async (req, res) => {
         try {
-            const questions = await  Question.find();
+            const questions = await Question.find();
 
             res.json(questions)
         } catch (error) {
@@ -33,8 +33,8 @@ const questionController  = {
         try {
             const id = req.params.id;
             const question = await Question.findById(id);
-            
-            if(!question){
+
+            if (!question) {
                 return res.status(404).json("Register not found");
             }
 
@@ -47,8 +47,8 @@ const questionController  = {
         try {
             const id = req.params.id;
             const question = await Question.findById(id);
-    
-            if(!question){
+
+            if (!question) {
                 return res.status(404).json("Register not found");
             }
 
@@ -70,12 +70,12 @@ const questionController  = {
                 optionC: req.body.optionC,
                 optionD: req.body.optionD,
                 optionE: req.body.optionE,
-                correctOption:req.body.correctOption,
+                correctOption: req.body.correctOption,
             };
 
             const updatedQuestion = await Question.findByIdAndUpdate(id, question);
 
-            if(!updatedQuestion){
+            if (!updatedQuestion) {
                 return res.status(404).json("Register not found");
             }
 
