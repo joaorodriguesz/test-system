@@ -14,18 +14,18 @@ class App extends Component {
     return (
       <div>
         <nav className="navbar navbar-expand navbar-dark bg-dark">
-          <Link to={"/"} className="navbar-brand">
-            Test-system
+          <Link to={"/"} className="navbar-brand m-2">
+            Resultados
           </Link>
           <div className="navbar-nav mr-auto">
             <li className="nav-item">
               <Link to={"/teste"} className="nav-link">
-                Register Test
+               Cadastrar Teste
               </Link>
             </li>
             <li className="nav-item">
               <Link to={"/test-list"} className="nav-link">
-                Tests
+                Resolver Teste
               </Link>
             </li>
           </div>

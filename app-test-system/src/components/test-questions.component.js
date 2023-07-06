@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
 
 const TestResultComponent = () => {
-  const [loading, setLoading] = useState(false);
   const [tests, setTests] = useState([]);
   const navigate = useNavigate(); 
   const { id } = useParams();
@@ -82,18 +81,13 @@ const TestResultComponent = () => {
       <div className="row justify-content-center align-items-center mt-4">
         <div className="col-md-8">
           <h2 className="text-center mb-4">Perguntas e Respostas</h2>
-          <div className={`text-center mt-4 mb-4 ${loading ? "" : "d-none"}`} id="loading">
-            <div className="spinner-border text-primary" role="status">
-              <span className="sr-only">Loading...</span>
-            </div>
-          </div>
           <div id="main">
             <form id="form">
-              <label>Studant Name</label>
+              <label>Nome</label>
               <input type="text" name="studantName" id='studant-name' className="form-control form-control-sm" />
-              <hr></hr>
+              <hr className="m-4"></hr>
               {tests.questions.map((question, index) => (
-                <div className="card" key={index}>
+                <div className="card m-2" key={index}>
                   <div className="card-body" name={index}>
                     <p className="card-text">{question.description}</p>
                     <div className="form-check">
@@ -166,7 +160,6 @@ const TestResultComponent = () => {
                 type="button"
                 onClick={() => submit(tests._id)}
                 className="btn btn-primary"
-                disabled={loading}
               >
                 Enviar Respostas
               </button>
