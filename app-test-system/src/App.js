@@ -6,14 +6,15 @@ import "./App.css";
 
 import TestQuestion from "./components/test-questions.component";
 import TestRegister from "./components/test-register.component";
-import TestList from "./components/test-list.component"
+import TestList from "./components/test-list.component";
+import Home from "./components/home.component";
 
 class App extends Component {
   render() {
     return (
       <div>
         <nav className="navbar navbar-expand navbar-dark bg-dark">
-          <Link to={"/teste"} className="navbar-brand">
+          <Link to={"/"} className="navbar-brand">
             Test-system
           </Link>
           <div className="navbar-nav mr-auto">
@@ -32,7 +33,7 @@ class App extends Component {
 
         <div className="container-fluid">
           <Routes>
-            <Route path="/" element={<TestRegister />} />
+            <Route path="/" element={<Home />} />
             <Route path="/teste" element={<TestRegister />} />
             <Route path="/test-question/:id" element={<TestQuestion />} />
             <Route path="/test-list" element={<TestList />} />

@@ -23,9 +23,9 @@ const testResultController = {
     },
     getAll: async (req, res) => {
         try {
-            const tests = await TestResult.find();
-
-            res.json(tests)
+            const results = await TestResult.find();
+           
+            res.json(results)
         } catch (error) {
             console.error(error);
         }
