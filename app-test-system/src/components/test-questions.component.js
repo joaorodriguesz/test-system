@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const TestResultComponent = () => {
-  const [loading, setLoading] = useState(false);
   const [tests, setTests] = useState([]);
+  const navigate = useNavigate(); 
   const { id } = useParams();
 
   const submit = (id) => {
-    setLoading(true);
-    fetch(`http://localhost:3000/tests/${id}`)
+    fetch(`http://localhost:8080/api/tests/${id}`)
       .then((response) => response.json())
       .then((response) => {
         let resultado = validateTest(response);
-        save(resultado);
+        save(id, resultado);
       });
   };
 
@@ -20,40 +19,36 @@ const TestResultComponent = () => {
     let qtdPerguntasResp = 0;
     let qtdPerguntasCorretas = 0;
 
-    test.perguntas.forEach((pergunta, index) => {
+    test.questions.forEach((pergunta, index) => {
       document.getElementsByName(index).forEach((element) => {
         if (!element.checked) {
           return;
         }
         qtdPerguntasResp++;
 
-        if (element.value === pergunta.opcaoCorreta) {
+        if (element.value === pergunta.correctOption) {
           qtdPerguntasCorretas++;
         }
       });
     });
 
     return {
-      id: 0,
-      testId: test.id,
-      teste: test.descricao,
-      qtdPerguntasResp: qtdPerguntasResp,
-      qtdPerguntasCorretas: qtdPerguntasCorretas,
-      qtdPerguntas: test.perguntas.length,
+      studantName: document.getElementById('studant-name').value,
+      answeredQuestionsCount: qtdPerguntasResp,
+      correctQuestionsCount: qtdPerguntasCorretas,
+      questionsCount: test.questions.length,
     };
   };
 
-  const save = (resultado) => {
-    fetch("http://localhost:3001/results", {
+  const save = (testId, resultado) => {
+    fetch(`http://localhost:8080/api/tests/${testId}/results`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(resultado),
     }).then(() => {
-      setTimeout(() => {
-        loadPage();
-      }, 200);
+      navigate('/');
     });
   };
 
@@ -69,7 +64,6 @@ const TestResultComponent = () => {
 
   useEffect(() => {
     loadPage();
-    console.log(tests);
   }, []);
 
   if (tests.length === 0) {
@@ -87,18 +81,13 @@ const TestResultComponent = () => {
       <div className="row justify-content-center align-items-center mt-4">
         <div className="col-md-8">
           <h2 className="text-center mb-4">Perguntas e Respostas</h2>
-          <div className={`text-center mt-4 mb-4 ${loading ? "" : "d-none"}`} id="loading">
-            <div className="spinner-border text-primary" role="status">
-              <span className="sr-only">Loading...</span>
-            </div>
-          </div>
           <div id="main">
             <form id="form">
-              <label>Studant Name</label>
+              <label>Nome</label>
               <input type="text" name="studantName" id='studant-name' className="form-control form-control-sm" />
-              <hr></hr>
+              <hr className="m-4"></hr>
               {tests.questions.map((question, index) => (
-                <div className="card" key={index}>
+                <div className="card m-2" key={index}>
                   <div className="card-body" name={index}>
                     <p className="card-text">{question.description}</p>
                     <div className="form-check">
@@ -169,9 +158,8 @@ const TestResultComponent = () => {
             <div className="text-center mt-4">
               <button
                 type="button"
-                onClick={() => submit(test.id)}
+                onClick={() => submit(tests._id)}
                 className="btn btn-primary"
-                disabled={loading}
               >
                 Enviar Respostas
               </button>

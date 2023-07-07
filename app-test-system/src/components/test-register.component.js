@@ -50,7 +50,7 @@ const TestComponent = () => {
   const modify = (teste) => {
 
     let testeEditado = {
-      title: teste.description,
+      title: teste.title,
       questions: teste.questions,
     };
 
@@ -61,7 +61,8 @@ const TestComponent = () => {
       },
       body: JSON.stringify(testeEditado),
     })
-      .then(() => {
+      .then((a) => {
+        console.log(a);
         loadPage();
       });
   };
@@ -90,10 +91,19 @@ const TestComponent = () => {
     loadPage();
   }, []);
 
+  if (tests.length === 0) {
+    return (
+      <div className="d-flex justify-content-center align-items-center vh-100">
+        <div class="spinner-border m-5" role="status">
+          <span class="sr-only"></span>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="container-fluid mt-3">
-      <h2 className="text-center">Testes</h2>
-      <hr />
+    <div className="container-fluid mt-4">
+      <h2 className="text-center mb-4">Cadastrar Teste</h2>
       <div className="container-fluid">
         <div className="row mt-2">
           <div className="col-md-12">
@@ -246,3 +256,6 @@ const TestComponent = () => {
 };
 
 export default TestComponent;
+
+
+

@@ -18,11 +18,20 @@ const TestListComponent = () => {
     loadPage();
   }, []);
 
+  if (tests.length === 0) {
+    return (
+        <div className="d-flex justify-content-center align-items-center vh-100">
+            <div class="spinner-border m-5" role="status">
+                <span class="sr-only"></span>
+            </div>
+        </div>
+    );
+}
+
   return (
     <div className="container-fluid mt-3">
-      <h2 className="text-center">Testes</h2>
+      <h2 className="text-center mb-4">Resolver Teste</h2>
       <div className="container-fluid">
-        <hr style={{ width: '90%' }} />
         <div id="contTable">
           <div className="text-center mt-4 mb-4 d-none" id="loading">
             <div className="spinner-border text-primary" role="status">
