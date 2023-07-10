@@ -4,7 +4,7 @@ async function main() {
     try {
 
         mongoose.set("strictQuery", true)
-        await mongoose.connect("mongodb+srv://systemowner:systemowner@systemowner.kys0noh.mongodb.net/?retryWrites=true&w=majority");
+        await mongoose.connect("");
     } catch (error) {
         console.log(`Erro: ${error}`);
     }
